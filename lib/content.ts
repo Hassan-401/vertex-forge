@@ -331,6 +331,13 @@ const ar = {
     ],
     rights: "© 2026 Vertex Forge — كل الحقوق محفوظة.",
     motto: "We Forge Digital Excellence.",
+    dev: {
+      prefix: "المطور",
+      name: "Hassan Mohamed",
+      role: "FULL STACK DEVELOPER",
+      whatsappAria: "واتساب حسن محمد",
+      websiteAria: "الموقع الشخصي لحسن محمد",
+    },
   },
 
   whatsappAria: "كلمنا على واتساب",
@@ -659,6 +666,13 @@ const en: Dict = {
     ],
     rights: "© 2026 Vertex Forge — All rights reserved.",
     motto: "We Forge Digital Excellence.",
+    dev: {
+      prefix: "developer",
+      name: "Hassan Mohamed",
+      role: "FULL STACK DEVELOPER",
+      whatsappAria: "Hassan Mohamed on WhatsApp",
+      websiteAria: "Hassan Mohamed's portfolio",
+    },
   },
 
   whatsappAria: "Chat with us on WhatsApp",

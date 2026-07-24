@@ -5,6 +5,7 @@ import { Portfolio } from "@/components/portfolio";
 import { Faq } from "@/components/faq";
 import { Testimonials } from "@/components/testimonials";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import { DevCredit } from "@/components/dev-credit";
 import { LogoMark } from "@/components/logo";
 import { useI18n } from "@/components/providers";
 
@@ -373,9 +374,10 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
             <span>{t.footer.rights}</span>
-            <span>{t.footer.motto}</span>
+            <DevCredit />
+            <span className="hidden sm:inline">{t.footer.motto}</span>
           </div>
         </div>
       </footer>
