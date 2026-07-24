@@ -61,8 +61,10 @@ export function DevCredit() {
     <div
       ref={wrapRef}
       className="relative inline-flex flex-col items-center"
+      // Opens on hover and then stays put — moving the mouse away must not
+      // close it, so the card can be reached and clicked. It closes only on an
+      // outside click, Escape, or tabbing away.
       onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
       onFocus={() => setOpen(true)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
