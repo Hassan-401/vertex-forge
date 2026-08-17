@@ -8,6 +8,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import { DevCredit } from "@/components/dev-credit";
 import { LogoMark } from "@/components/logo";
 import { useI18n } from "@/components/providers";
+import { WHATSAPP_URL } from "@/lib/site";
 
 /* -------------------------------- helpers -------------------------------- */
 
@@ -92,7 +93,9 @@ export default function Home() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#contact"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5"
             >
               {t.hero.ctaPrimary}
@@ -245,7 +248,9 @@ export default function Home() {
               </ul>
 
               <a
-                href="#contact"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={
                   plan.featured
                     ? "mt-8 rounded-full bg-primary py-3.5 text-center text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:-translate-y-0.5"
@@ -327,7 +332,9 @@ export default function Home() {
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href="https://wa.me/966500000000"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5"
             >
               {t.cta.primary}

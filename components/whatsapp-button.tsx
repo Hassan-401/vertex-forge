@@ -1,13 +1,14 @@
 "use client";
 
 import { useI18n } from "@/components/providers";
+import { WHATSAPP_URL } from "@/lib/site";
 
 export function WhatsAppButton() {
   const { t } = useI18n();
 
   return (
     <a
-      href="https://wa.me/966500000000"
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t.whatsappAria}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { LogoLockup } from "@/components/logo";
 import { useI18n, useTheme } from "@/components/providers";
+import { WHATSAPP_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 function ThemeToggle() {
@@ -110,7 +111,9 @@ export function SiteHeader() {
           <LangToggle />
           <ThemeToggle />
           <a
-            href="#contact"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:-translate-y-0.5 md:inline-flex"
           >
             {t.navCta}
@@ -165,7 +168,9 @@ export function SiteHeader() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="mt-1 rounded-xl bg-primary px-4 py-3 text-center text-sm font-bold text-primary-foreground"
           >
