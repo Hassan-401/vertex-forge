@@ -69,7 +69,7 @@ const ar = {
       // ── مواقع شركات (شغل حقيقي أونلاين) ─────────────────────────────
       {
         key: "delta-pumps",
-        title: "دلتا للمضخات",
+        title: "Delta Pumps",
         category: "corp",
         tag: "موقع شركة",
         url: "delta-pumps.vercel.app",
@@ -78,7 +78,7 @@ const ar = {
       },
       {
         key: "elikhlas",
-        title: "شركة الإخلاص",
+        title: "El Ikhlas",
         category: "corp",
         tag: "موقع شركة",
         url: "elikhlas-company.vercel.app",
@@ -87,7 +87,7 @@ const ar = {
       },
       {
         key: "khatab",
-        title: "شركة خطاب",
+        title: "Khatab",
         category: "corp",
         tag: "موقع شركة",
         url: "khatab-company.vercel.app",
@@ -96,7 +96,7 @@ const ar = {
       },
       {
         key: "elmotahidoon",
-        title: "المتحدون العرب",
+        title: "El Motahidoon",
         category: "corp",
         tag: "موقع شركة",
         url: "elmotahidoon-elarab.vercel.app",
@@ -105,7 +105,7 @@ const ar = {
       },
       {
         key: "elmotahida",
-        title: "الشركة المتحدة",
+        title: "El Motahida",
         category: "corp",
         tag: "موقع شركة",
         url: "elmotahida-nine.vercel.app",
@@ -114,7 +114,7 @@ const ar = {
       },
       {
         key: "canal-solar",
-        title: "قنال للطاقة الشمسية",
+        title: "Canal Solar",
         category: "corp",
         tag: "موقع شركة",
         url: "canal-solar.vercel.app",
@@ -123,7 +123,7 @@ const ar = {
       },
       {
         key: "zamzam",
-        title: "شركة زمزم",
+        title: "Zamzam",
         category: "corp",
         tag: "موقع شركة",
         url: "zamzam-company.vercel.app",
@@ -132,7 +132,7 @@ const ar = {
       },
       {
         key: "ms-group",
-        title: "إم إس جروب",
+        title: "MS Group",
         category: "corp",
         tag: "موقع شركة",
         url: "ms-group-beryl.vercel.app",
@@ -141,7 +141,7 @@ const ar = {
       },
       {
         key: "lovat-travels",
-        title: "لوفات للسياحة",
+        title: "Lovat Travels",
         category: "corp",
         tag: "موقع شركة",
         url: "travels-lovat.vercel.app",
@@ -152,63 +152,63 @@ const ar = {
       // ── متاجر إلكترونية (تصاميم جاهزة — قريباً أونلاين) ─────────────
       {
         key: "store-fashion",
-        title: "متجر أزياء وموضة",
+        title: "Fashion Store",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Fashion E-commerce.png",
       },
       {
         key: "store-beauty",
-        title: "متجر جمال وعناية بالبشرة",
+        title: "Beauty & Skincare",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Beauty & Skincare.png",
       },
       {
         key: "store-electronics",
-        title: "متجر إلكترونيات",
+        title: "Electronics Store",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Electronics E-commerce.png",
       },
       {
         key: "store-smart-home",
-        title: "متجر المنزل الذكي",
+        title: "Smart Home",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Smart Home.png",
       },
       {
         key: "store-home-decor",
-        title: "متجر ديكور المنزل",
+        title: "Home Decor",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Home Decor E-commerce.png",
       },
       {
         key: "store-sportswear",
-        title: "متجر ملابس رياضية",
+        title: "Sportswear",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Sportswear.png",
       },
       {
         key: "store-automotive",
-        title: "متجر إكسسوارات سيارات",
+        title: "Automotive Accessories",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Automotive Accessories E-commerce.png",
       },
       {
         key: "store-pet",
-        title: "متجر مستلزمات حيوانات أليفة",
+        title: "Pet Supplies",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Pet Supplies.png",
       },
       {
         key: "store-outdoor",
-        title: "متجر رحلات وتخييم",
+        title: "Outdoor & Camping",
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Outdoor & Camping.png",
