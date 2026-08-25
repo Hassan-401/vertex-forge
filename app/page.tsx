@@ -33,20 +33,6 @@ function Stars() {
   );
 }
 
-function Check() {
-  return (
-    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-      <svg
-        viewBox="0 0 24 24"
-        className="h-3 w-3 fill-none stroke-current"
-        strokeWidth="3"
-      >
-        <path d="M20 6 9 17l-5-5" />
-      </svg>
-    </span>
-  );
-}
-
 function ShieldIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -203,75 +189,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============================== PRICING =========================== */}
-      <section id="pricing" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-        <div className="mb-14 text-center">
-          <Eyebrow>{t.pricing.eyebrow}</Eyebrow>
-          <h2 className="mt-5 text-3xl font-black sm:text-4xl md:text-5xl">
-            {t.pricing.title}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            {t.pricing.sub}
-          </p>
-        </div>
-
-        <div className="grid items-stretch gap-6 lg:grid-cols-3">
-          {t.pricing.plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={
-                plan.featured
-                  ? "relative flex flex-col rounded-3xl border border-primary/50 bg-card p-8 glow-brand"
-                  : "relative flex flex-col rounded-3xl border border-border bg-card p-8 ring-hair"
-              }
-            >
-              {plan.featured && (
-                <span className="absolute -top-3 end-8 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">
-                  {t.pricing.badge}
-                </span>
-              )}
-              <h3 className="text-lg font-extrabold">{plan.name}</h3>
-              <div className="mt-6 flex items-end gap-2">
-                <span className="text-4xl font-black">{plan.price}</span>
-                <span className="mb-1.5 text-sm text-muted-foreground">
-                  {t.pricing.currency}
-                </span>
-              </div>
-
-              <ul className="mt-7 space-y-3.5 text-sm">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex gap-3">
-                    <Check />
-                    <span className="text-muted-foreground">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={
-                  plan.featured
-                    ? "mt-8 rounded-full bg-primary py-3.5 text-center text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:-translate-y-0.5"
-                    : "mt-8 rounded-full border border-border bg-secondary/50 py-3.5 text-center text-sm font-bold text-foreground transition-colors hover:bg-secondary"
-                }
-              >
-                {plan.cta}
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* guarantee line under the plans */}
-        <div className="mt-8 flex justify-center">
-          <p className="flex items-center gap-2.5 rounded-full border border-border bg-secondary/40 px-5 py-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
-            <ShieldIcon className="h-4 w-4 shrink-0 text-primary" />
-            {t.pricing.guarantee}
-          </p>
-        </div>
-      </section>
-
       {/* =========================== TESTIMONIALS ========================= */}
       <section
         id="testimonials"
@@ -340,7 +257,7 @@ export default function Home() {
               {t.cta.primary}
             </a>
             <a
-              href="#pricing"
+              href="#work"
               className="rounded-full border border-border bg-secondary/50 px-8 py-4 text-sm font-bold text-foreground transition-colors hover:bg-secondary"
             >
               {t.cta.secondary}
