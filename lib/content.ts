@@ -239,6 +239,15 @@ const ar = {
         href: "https://madinty-ratan.vercel.app/",
         image: "/assets/site-madinty-ratan.png",
       },
+      {
+        key: "zahra",
+        title: "Zahra Store",
+        category: "store",
+        tag: "متجر إلكتروني",
+        url: "zahra-store-fawn.vercel.app",
+        href: "https://zahra-store-fawn.vercel.app/",
+        image: "/assets/site-zahra.png",
+      },
 
       // ── متاجر إلكترونية (تصاميم جاهزة — قريباً أونلاين) ─────────────
       {
@@ -727,6 +736,15 @@ const en: Dict = {
         url: "madinty-ratan.vercel.app",
         href: "https://madinty-ratan.vercel.app/",
         image: "/assets/site-madinty-ratan.png",
+      },
+      {
+        key: "zahra",
+        title: "Zahra Store",
+        category: "store",
+        tag: "E-commerce",
+        url: "zahra-store-fawn.vercel.app",
+        href: "https://zahra-store-fawn.vercel.app/",
+        image: "/assets/site-zahra.png",
       },
 
       // ── E-commerce stores (ready designs — coming online soon) ─────
