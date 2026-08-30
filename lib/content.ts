@@ -67,6 +67,24 @@ const ar = {
     projects: [
       // ── مواقع شركات (شغل حقيقي أونلاين) ─────────────────────────────
       {
+        key: "eltaher-law",
+        title: "El Taher Law",
+        category: "corp",
+        tag: "موقع شركة",
+        url: "eltaher-law.com",
+        href: "https://eltaher-law.com/",
+        image: "/assets/site-eltaher-law.png",
+      },
+      {
+        key: "msk-medical",
+        title: "MSK Medical",
+        category: "corp",
+        tag: "موقع شركة",
+        url: "msk-medical-laboratory.vercel.app",
+        href: "https://msk-medical-laboratory.vercel.app/",
+        image: "/assets/site-msk-medical.png",
+      },
+      {
         key: "goldencrop",
         title: "Golden Crop",
         category: "corp",
@@ -564,6 +582,24 @@ const en: Dict = {
     ],
     projects: [
       // ── Company sites (live, real work) ────────────────────────────
+      {
+        key: "eltaher-law",
+        title: "El Taher Law",
+        category: "corp",
+        tag: "Company site",
+        url: "eltaher-law.com",
+        href: "https://eltaher-law.com/",
+        image: "/assets/site-eltaher-law.png",
+      },
+      {
+        key: "msk-medical",
+        title: "MSK Medical",
+        category: "corp",
+        tag: "Company site",
+        url: "msk-medical-laboratory.vercel.app",
+        href: "https://msk-medical-laboratory.vercel.app/",
+        image: "/assets/site-msk-medical.png",
+      },
       {
         key: "goldencrop",
         title: "Golden Crop",
