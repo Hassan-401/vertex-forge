@@ -91,7 +91,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 md:h-20">
-        <a href="#top" className="shrink-0">
+        <a href="/" className="shrink-0">
           <LogoLockup />
         </a>
 

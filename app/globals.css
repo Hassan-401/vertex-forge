@@ -93,7 +93,8 @@
   --brand-soft: #fb8c3d;
 
   /* decorative tokens */
-  --grid-line: rgba(0, 0, 0, 0.045);
+  /* light mode keeps the hero clean — no background grid squares */
+  --grid-line: transparent;
   --hair: rgba(0, 0, 0, 0.06);
   --glow-strong: rgba(224, 84, 10, 0.16);
   --glow-mid: rgba(224, 84, 10, 0.12);
@@ -236,6 +237,40 @@
       var(--glow-mid),
       transparent 70%
     );
+  }
+
+  /* Hero robot aura — restrained and warm in light mode, punchier in dark. */
+  .robot-glow-1 {
+    background: radial-gradient(
+      46% 46% at 50% 48%,
+      color-mix(in srgb, var(--brand) 20%, transparent),
+      transparent 72%
+    );
+    opacity: 0.85;
+  }
+  .robot-glow-2 {
+    background: radial-gradient(
+      40% 52% at 50% 60%,
+      color-mix(in srgb, var(--brand-soft) 26%, transparent),
+      transparent 74%
+    );
+    opacity: 0.55;
+  }
+  .dark .robot-glow-1 {
+    background: radial-gradient(
+      42% 42% at 50% 46%,
+      color-mix(in srgb, var(--brand) 60%, transparent),
+      transparent 70%
+    );
+    opacity: 1;
+  }
+  .dark .robot-glow-2 {
+    background: radial-gradient(
+      36% 48% at 55% 56%,
+      color-mix(in srgb, var(--brand-soft) 50%, transparent),
+      transparent 72%
+    );
+    opacity: 0.8;
   }
 
   .mask-fade-x {

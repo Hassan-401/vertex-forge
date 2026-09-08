@@ -2,6 +2,7 @@
 
 import { SiteHeader } from "@/components/site-header";
 import { Portfolio } from "@/components/portfolio";
+import { HeroRobot } from "@/components/hero-robot";
 import { Faq } from "@/components/faq";
 import { Testimonials } from "@/components/testimonials";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -64,39 +65,47 @@ export default function Home() {
         <div className="glow-hero pointer-events-none absolute inset-x-0 -top-40 h-[520px]" />
         <div className="pointer-events-none absolute -top-24 end-1/4 h-72 w-72 rounded-full bg-primary/20 blur-[120px]" />
 
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 pb-20 pt-36 text-center sm:px-6 md:pt-44">
-          <Eyebrow>{t.hero.eyebrow}</Eyebrow>
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 pb-16 pt-32 sm:px-6 md:pt-40 lg:grid-cols-2 lg:gap-6">
+          <div className="text-center lg:text-start">
+            <Eyebrow>{t.hero.eyebrow}</Eyebrow>
 
-          <h1 className="mt-6 text-4xl font-black leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
-            {t.hero.titleA}{" "}
-            <span className="text-gradient-brand">{t.hero.titleHighlight}</span>
-            <br className="hidden sm:block" /> {t.hero.titleB}
-          </h1>
+            <h1 className="mt-6 text-4xl font-black leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
+              {t.hero.titleA}{" "}
+              <span className="text-gradient-brand">
+                {t.hero.titleHighlight}
+              </span>
+              <br className="hidden sm:block" /> {t.hero.titleB}
+            </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-            {t.hero.subtitle}
-          </p>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0">
+              {t.hero.subtitle}
+            </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5"
-            >
-              {t.hero.ctaPrimary}
-            </a>
-            <a
-              href="#work"
-              className="rounded-full border border-border bg-secondary/50 px-8 py-3.5 text-sm font-bold text-foreground transition-colors hover:bg-secondary"
-            >
-              {t.hero.ctaSecondary}
-            </a>
+            <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5"
+              >
+                {t.hero.ctaPrimary}
+              </a>
+              <a
+                href="#work"
+                className="rounded-full border border-border bg-secondary/50 px-8 py-3.5 text-sm font-bold text-foreground transition-colors hover:bg-secondary"
+              >
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-3 text-sm text-muted-foreground lg:justify-start">
+              <Stars />
+              <span>{t.hero.trust}</span>
+            </div>
           </div>
 
-          <div className="mt-8 flex items-center gap-3 text-sm text-muted-foreground">
-            <Stars />
-            <span>{t.hero.trust}</span>
+          <div className="flex justify-center">
+            <HeroRobot />
           </div>
         </div>
 
@@ -145,12 +154,19 @@ export default function Home() {
             {t.work.sub}
           </p>
         </div>
-        <Portfolio />
+        <Portfolio limit={8} showViewMore />
       </section>
 
       {/* ============================== PROCESS =========================== */}
       <section id="process" className="relative overflow-hidden py-24">
         <div className="glow-top pointer-events-none absolute inset-x-0 top-0 h-64" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/robot/robot-1.webp"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute top-16 start-0 hidden w-40 -rotate-6 select-none opacity-90 drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)] xl:block xl:w-52"
+        />
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mb-14 text-center">
             <Eyebrow>{t.process.eyebrow}</Eyebrow>
@@ -208,13 +224,22 @@ export default function Home() {
 
       {/* ================================ FAQ ============================= */}
       <section id="faq" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-        <div className="mb-12 text-center">
-          <Eyebrow>{t.faq.eyebrow}</Eyebrow>
-          <h2 className="mt-5 text-3xl font-black sm:text-4xl md:text-5xl">
-            {t.faq.title}
-          </h2>
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-14">
+          <div className="text-center lg:sticky lg:top-28 lg:text-start">
+            <Eyebrow>{t.faq.eyebrow}</Eyebrow>
+            <h2 className="mt-5 text-3xl font-black sm:text-4xl md:text-5xl">
+              {t.faq.title}
+            </h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/robot/robot-2.webp"
+              alt=""
+              aria-hidden
+              className="mx-auto mt-10 hidden w-64 select-none drop-shadow-[0_22px_40px_rgba(0,0,0,0.45)] lg:block"
+            />
+          </div>
+          <Faq />
         </div>
-        <Faq />
       </section>
 
       {/* ============================ GUARANTEES ========================== */}
@@ -239,8 +264,14 @@ export default function Home() {
       >
         <div className="glow-bottom pointer-events-none absolute inset-0" />
         <div className="relative mx-auto max-w-3xl text-center">
-          <LogoMark className="mx-auto h-14 animate-float" />
-          <h2 className="mt-8 text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/robot/robot-3.webp"
+            alt=""
+            aria-hidden
+            className="mx-auto h-40 w-auto animate-float select-none sm:h-48"
+          />
+          <h2 className="mt-6 text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
             {t.cta.titleA}{" "}
             <span className="text-gradient-brand">{t.cta.titleHighlight}</span>
           </h2>
@@ -268,12 +299,12 @@ export default function Home() {
 
       {/* ============================== FOOTER ============================ */}
       <footer className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-start">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-start">
             <div className="flex items-center gap-3">
-              <LogoMark className="h-10" />
+              <LogoMark className="h-9" />
               <div>
-                <div className="text-lg font-extrabold">
+                <div className="text-base font-extrabold">
                   <span className="text-silver">VERTEX</span>{" "}
                   <span className="text-gradient-brand">FORGE</span>
                 </div>
@@ -292,13 +323,7 @@ export default function Home() {
             </nav>
           </div>
 
-          <div className="mt-10 select-none text-center">
-            <span className="text-[14vw] font-black leading-none tracking-tight text-foreground/[0.05] md:text-[9rem]">
-              VERTEX FORGE
-            </span>
-          </div>
-
-          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-border pt-5 text-xs text-muted-foreground sm:flex-row">
             <span>{t.footer.rights}</span>
             <DevCredit />
             <span className="hidden sm:inline">{t.footer.motto}</span>

@@ -14,12 +14,14 @@ const ar = {
   menuAria: "القائمة",
 
   nav: [
-    { label: "شغلنا", href: "#work" },
-    { label: "خطوات الشغل", href: "#process" },
-    { label: "آراء العملاء", href: "#testimonials" },
-    { label: "الأسئلة", href: "#faq" },
+    { label: "شغلنا", href: "/#work" },
+    { label: "المشاريع", href: "/work" },
+    { label: "خطوات الشغل", href: "/#process" },
+    { label: "آراء العملاء", href: "/#testimonials" },
+    { label: "الأسئلة", href: "/#faq" },
   ],
   navCta: "ابدأ مشروعك",
+  workBack: "الرجوع للرئيسية",
 
   hero: {
     eyebrow: "شركة تصميم وتطوير مواقع",
@@ -56,16 +58,33 @@ const ar = {
     sub: "نماذج من مشاريع عملناها لعملائنا في مجالات مختلفة.",
     soon: "قريباً",
     visit: "زيارة الموقع",
+    view: "اعرض",
+    viewMore: "عرض المزيد",
+    pageTitle: "كل شغلنا",
+    pageSub: "كل المشاريع اللي عملناها — فلتر بالقسم اللي يهمك.",
     empty: "لسه بنجهّز مشاريع في القسم ده — قريباً إن شاء الله.",
     filters: [
       { key: "all", label: "الكل" },
-      { key: "store", label: "متاجر إلكترونية" },
       { key: "corp", label: "مواقع شركات" },
+      { key: "store", label: "متاجر إلكترونية" },
+      { key: "tourism", label: "مواقع سياحية" },
+      { key: "news", label: "مواقع إخبارية" },
+      { key: "portfolio", label: "بورتفوليو" },
+      { key: "clinics", label: "سيستم عيادات" },
       { key: "landing", label: "صفحات هبوط" },
       { key: "dash", label: "لوحات تحكم" },
     ],
     projects: [
       // ── مواقع شركات (شغل حقيقي أونلاين) ─────────────────────────────
+      {
+        key: "fiber-glass",
+        title: "Shorouk Fiberglass",
+        category: "corp",
+        tag: "موقع شركة",
+        url: "fiber-glass-factory.vercel.app",
+        href: "https://fiber-glass-factory.vercel.app/",
+        image: "/assets/site-fiber-glass.png",
+      },
       {
         key: "eltaher-law",
         title: "El Taher Law",
@@ -184,6 +203,28 @@ const ar = {
         image: "/assets/site-lovat-travels.png",
       },
 
+      // ── مواقع سياحية (شغل حقيقي أونلاين) ────────────────────────────
+      {
+        key: "go-sharm",
+        title: "Go Sharm",
+        category: "tourism",
+        tag: "موقع سياحي",
+        url: "escursioni-go-sharm.com",
+        href: "https://escursioni-go-sharm.com/",
+        image: "/assets/site-go-sharm.png",
+      },
+
+      // ── بورتفوليو (شغل حقيقي أونلاين) ───────────────────────────────
+      {
+        key: "hassanmohamed",
+        title: "Hassan Mohamed",
+        category: "portfolio",
+        tag: "بورتفوليو",
+        url: "hassanmohamed.online",
+        href: "https://hassanmohamed.online/",
+        image: "/assets/site-hassanmohamed.png",
+      },
+
       // ── متاجر إلكترونية (شغل حقيقي أونلاين) ─────────────────────────
       {
         key: "delta-pumps",
@@ -265,6 +306,24 @@ const ar = {
         url: "zahra-store-fawn.vercel.app",
         href: "https://zahra-store-fawn.vercel.app/",
         image: "/assets/site-zahra.png",
+      },
+      {
+        key: "total-store",
+        title: "Total Store",
+        category: "store",
+        tag: "متجر إلكتروني",
+        url: "total-store.vercel.app",
+        href: "https://total-store.vercel.app/",
+        image: "/assets/site-total-store.png",
+      },
+      {
+        key: "five-kids",
+        title: "Five Kids Wear",
+        category: "store",
+        tag: "متجر إلكتروني",
+        url: "five-kids-wear.vercel.app",
+        href: "https://five-kids-wear.vercel.app/",
+        image: "/assets/site-five-kids.png",
       },
 
       // ── متاجر إلكترونية (تصاميم جاهزة — قريباً أونلاين) ─────────────
@@ -530,12 +589,14 @@ const en: Dict = {
   menuAria: "Menu",
 
   nav: [
-    { label: "Work", href: "#work" },
-    { label: "Process", href: "#process" },
-    { label: "Reviews", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Work", href: "/#work" },
+    { label: "Projects", href: "/work" },
+    { label: "Process", href: "/#process" },
+    { label: "Reviews", href: "/#testimonials" },
+    { label: "FAQ", href: "/#faq" },
   ],
   navCta: "Start your project",
+  workBack: "Back to home",
 
   hero: {
     eyebrow: "Web design & development studio",
@@ -572,16 +633,33 @@ const en: Dict = {
     sub: "A selection of projects we designed and built for clients across industries.",
     soon: "Soon",
     visit: "Visit site",
+    view: "View",
+    viewMore: "View more",
+    pageTitle: "All our work",
+    pageSub: "Every project we've built — filter by the category you care about.",
     empty: "We're still preparing projects for this section — coming soon.",
     filters: [
       { key: "all", label: "All" },
-      { key: "store", label: "E-commerce" },
       { key: "corp", label: "Company sites" },
+      { key: "store", label: "E-commerce" },
+      { key: "tourism", label: "Tourism" },
+      { key: "news", label: "News sites" },
+      { key: "portfolio", label: "Portfolios" },
+      { key: "clinics", label: "Clinic systems" },
       { key: "landing", label: "Landing pages" },
       { key: "dash", label: "Dashboards" },
     ],
     projects: [
       // ── Company sites (live, real work) ────────────────────────────
+      {
+        key: "fiber-glass",
+        title: "Shorouk Fiberglass",
+        category: "corp",
+        tag: "Company site",
+        url: "fiber-glass-factory.vercel.app",
+        href: "https://fiber-glass-factory.vercel.app/",
+        image: "/assets/site-fiber-glass.png",
+      },
       {
         key: "eltaher-law",
         title: "El Taher Law",
@@ -700,6 +778,28 @@ const en: Dict = {
         image: "/assets/site-lovat-travels.png",
       },
 
+      // ── Tourism sites (live, real work) ────────────────────────────
+      {
+        key: "go-sharm",
+        title: "Go Sharm",
+        category: "tourism",
+        tag: "Tourism site",
+        url: "escursioni-go-sharm.com",
+        href: "https://escursioni-go-sharm.com/",
+        image: "/assets/site-go-sharm.png",
+      },
+
+      // ── Portfolios (live, real work) ───────────────────────────────
+      {
+        key: "hassanmohamed",
+        title: "Hassan Mohamed",
+        category: "portfolio",
+        tag: "Portfolio",
+        url: "hassanmohamed.online",
+        href: "https://hassanmohamed.online/",
+        image: "/assets/site-hassanmohamed.png",
+      },
+
       // ── E-commerce stores (live, real work) ────────────────────────
       {
         key: "delta-pumps",
@@ -781,6 +881,24 @@ const en: Dict = {
         url: "zahra-store-fawn.vercel.app",
         href: "https://zahra-store-fawn.vercel.app/",
         image: "/assets/site-zahra.png",
+      },
+      {
+        key: "total-store",
+        title: "Total Store",
+        category: "store",
+        tag: "E-commerce",
+        url: "total-store.vercel.app",
+        href: "https://total-store.vercel.app/",
+        image: "/assets/site-total-store.png",
+      },
+      {
+        key: "five-kids",
+        title: "Five Kids Wear",
+        category: "store",
+        tag: "E-commerce",
+        url: "five-kids-wear.vercel.app",
+        href: "https://five-kids-wear.vercel.app/",
+        image: "/assets/site-five-kids.png",
       },
 
       // ── E-commerce stores (ready designs — coming online soon) ─────
