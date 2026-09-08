@@ -23,9 +23,10 @@ export const LANG_KEY = "vf-lang";
 export const THEME_KEY = "vf-theme";
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  // Server and first client render always use "ar" so hydration matches; the
-  // stored preference is applied right after mount.
-  const [locale, setLocale] = useState<Locale>("ar");
+  // Server and first client render always use "en" so hydration matches; the
+  // stored preference (if the visitor previously chose Arabic) is applied
+  // right after mount.
+  const [locale, setLocale] = useState<Locale>("en");
 
   useEffect(() => {
     const saved = window.localStorage.getItem(LANG_KEY);

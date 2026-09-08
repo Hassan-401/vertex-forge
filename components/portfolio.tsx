@@ -63,8 +63,10 @@ function ProjectCard({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-extrabold leading-snug">{project.title}</h3>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <h3 className="text-base font-extrabold leading-snug sm:text-lg">
+          {project.title}
+        </h3>
         {project.url && (
           <p className="mt-1 truncate text-xs text-muted-foreground" dir="ltr">
             {project.url}
@@ -72,7 +74,7 @@ function ProjectCard({
         )}
         <span
           className={cn(
-            "mt-4 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-transform",
+            "mt-4 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-transform sm:px-5 sm:py-2.5 sm:text-sm",
             isLive
               ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 group-hover:-translate-y-0.5"
               : "border border-border bg-secondary/50 text-muted-foreground",
@@ -151,7 +153,7 @@ export function Portfolio({
     ) : (
       <div
         className={cn(
-          "grid gap-6 sm:grid-cols-2",
+          "grid grid-cols-2 gap-4 sm:gap-6",
           sidebar ? "xl:grid-cols-3" : "lg:grid-cols-3 xl:grid-cols-4",
         )}
       >

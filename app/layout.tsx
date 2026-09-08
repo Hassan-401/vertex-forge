@@ -36,7 +36,7 @@ var d=document.documentElement;
 var t=localStorage.getItem('vf-theme');
 if(t==='light'){d.classList.remove('dark')}else{d.classList.add('dark')}
 var l=localStorage.getItem('vf-lang');
-if(l==='en'){d.lang='en';d.dir='ltr'}
+if(l==='ar'){d.lang='ar';d.dir='rtl'}
 }catch(e){}})();`;
 
 export default function RootLayout({
@@ -46,8 +46,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ar"
-      dir="rtl"
+      lang="en"
+      dir="ltr"
       className={`dark ${cairo.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
