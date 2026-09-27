@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Source robot assets (copies live in public/robot)
 /robot/
+
+# Source restaurant assets (copies live in public/restaurants)
+/restaurants/

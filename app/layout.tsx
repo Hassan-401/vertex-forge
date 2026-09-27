@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const NO_FLASH = `(function(){try{
 var d=document.documentElement;
 var t=localStorage.getItem('vf-theme');
-if(t==='light'){d.classList.remove('dark')}else{d.classList.add('dark')}
+if(t==='dark'){d.classList.add('dark')}else{d.classList.remove('dark')}
 var l=localStorage.getItem('vf-lang');
 if(l==='ar'){d.lang='ar';d.dir='rtl'}
 }catch(e){}})();`;
@@ -48,7 +48,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`dark ${cairo.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${cairo.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

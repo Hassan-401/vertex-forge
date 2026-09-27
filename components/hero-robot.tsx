@@ -136,7 +136,7 @@ export function HeroRobot() {
         <canvas
           ref={canvasRef}
           aria-hidden
-          className="h-full w-full animate-float select-none object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.45)]"
+          className="robot-canvas h-full w-full animate-float select-none object-contain"
         />
       </div>
 

@@ -239,6 +239,15 @@
     );
   }
 
+  /* Hero robot cast shadow — soft & warm in light mode (no cool grey/blue
+     haze that used to trail the robot), deep and dark in dark mode. */
+  .robot-canvas {
+    filter: drop-shadow(0 18px 26px rgba(224, 84, 10, 0.14));
+  }
+  .dark .robot-canvas {
+    filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
+  }
+
   /* Hero robot aura — restrained and warm in light mode, punchier in dark. */
   .robot-glow-1 {
     background: radial-gradient(
@@ -271,6 +280,14 @@
       transparent 72%
     );
     opacity: 0.8;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   .mask-fade-x {

@@ -70,8 +70,9 @@ type ThemeValue = {
 const ThemeContext = createContext<ThemeValue | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Matches the `dark` class rendered on <html> by default in the layout.
-  const [theme, setTheme] = useState<Theme>("dark");
+  // Light is the primary theme, matching the layout default (no `dark` class on
+  // <html>). A returning visitor who previously chose dark gets it back on mount.
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const saved = window.localStorage.getItem(THEME_KEY);
