@@ -275,6 +275,34 @@ function TopBar({
 
 /* ================================ HOME =================================== */
 
+/* faint outline food doodles scattered behind the hero headline */
+const DOODLE = {
+  burger: "M4 13h16M4 13a8 8 0 0 1 16 0M6 17h12a2 2 0 0 0 0-4H6a2 2 0 0 0 0 4Zm1-8.5h.01M10 7h.01M13 7.5h.01M16 8h.01",
+  cup: "M6 8h11a3 3 0 0 1 0 6h-1M6 8v9a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3V8M9 3v2M12 3v2M15 3v2",
+  pizza: "M12 3 3 20l9-3 9 3zM12 9h.01M9.5 14h.01M14.5 14h.01",
+  fork: "M7 3v7a2 2 0 0 0 2 2h0v9M9 3v5M5 3v5M17 3c-1.5 0-2 2-2 5s.5 4 2 4v9",
+  drink: "M6 4h12l-1.5 9a3 3 0 0 1-3 2.5h-3A3 3 0 0 1 7.5 13L6 4ZM6 4l-.5-2M8 8h8",
+};
+
+function HeroDoodles() {
+  const items = [
+    { d: DOODLE.burger, style: { top: "18%", insetInlineStart: "6%", width: 46, transform: "rotate(-8deg)" } },
+    { d: DOODLE.cup, style: { top: "8%", insetInlineEnd: "10%", width: 34, transform: "rotate(10deg)" } },
+    { d: DOODLE.pizza, style: { top: "54%", insetInlineStart: "22%", width: 40, transform: "rotate(6deg)" } },
+    { d: DOODLE.drink, style: { top: "48%", insetInlineEnd: "8%", width: 30, transform: "rotate(-12deg)" } },
+    { d: DOODLE.fork, style: { top: "62%", insetInlineEnd: "34%", width: 26, transform: "rotate(14deg)" } },
+  ];
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {items.map((it, i) => (
+        <svg key={i} viewBox="0 0 24 24" fill="none" stroke={MAROON} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="absolute" style={{ opacity: 0.07, ...it.style }}>
+          <path d={it.d} />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 function HomeView({
   L,
   locale,
@@ -302,20 +330,38 @@ function HomeView({
     catRefs.current[i]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   };
 
+  // centre the active category once the carousel is mounted
+  useEffect(() => {
+    catRefs.current[cat]?.scrollIntoView({ inline: "center", block: "nearest" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="pb-32">
+    <div className="bg-white pb-28">
       <TopBar L={L} locale={locale} onCart={openCart} onMenu={openSide} cartCount={cartCount} />
 
-      <p className="px-5 pb-2 pt-3 text-[17px] font-extrabold leading-7 text-neutral-800">
-        {L("نكهات فريدة… تجربة طعم لا تُنسى", "Unique flavors… an unforgettable taste experience")} 😍✨
-      </p>
+      {/* hero headline over faint food doodles */}
+      <div className="relative overflow-hidden">
+        <HeroDoodles />
+        <p className="relative px-5 pb-5 pt-4 text-[19px] font-extrabold leading-8 text-neutral-800">
+          {L("نكهات فريدة… تجربة طعم لا تُنسى", "Unique flavors… an unforgettable taste experience")} 😍✨
+        </p>
+      </div>
 
-      {/* hero dome + category carousel */}
-      <div className="relative mt-2">
-        <div className="relative overflow-hidden pb-4 pt-3">
-          <div className="absolute inset-x-[-18%] -top-10 bottom-0 rounded-[50%]" style={{ background: MAROON }} />
-          <div className="relative mx-auto h-1.5 w-16 rounded-full bg-amber-400" />
-          <div className="scrollbar-none relative mt-4 flex items-center gap-3 overflow-x-auto px-[42%] py-2">
+      {/* layered curved domes: maroon (categories) over rose (showcase) */}
+      <div className="relative overflow-hidden">
+        {/* dome backdrops */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-0 h-[430px] w-[152%] -translate-x-1/2 rounded-[50%]" style={{ background: MAROON }} />
+          <div className="absolute left-1/2 top-[206px] h-[840px] w-[176%] -translate-x-1/2 rounded-[50%]" style={{ background: ROSE }} />
+        </div>
+
+        <div className="relative pb-9">
+          {/* handle at the dome crown */}
+          <div className="mx-auto mt-4 h-1.5 w-16 rounded-full bg-amber-400" />
+
+          {/* category carousel on the maroon dome */}
+          <div className="scrollbar-none mt-5 flex items-start gap-4 overflow-x-auto px-[32%] pb-1">
             {MENU.map((c, i) => {
               const active = i === cat;
               return (
@@ -323,35 +369,36 @@ function HomeView({
                   key={c.id}
                   ref={(el) => { catRefs.current[i] = el; }}
                   onClick={() => selectCat(i)}
-                  className="flex shrink-0 snap-center flex-col items-center gap-2 transition-all"
-                  style={{ transform: active ? "scale(1)" : "scale(0.8)", opacity: active ? 1 : 0.72 }}
+                  className="flex shrink-0 snap-center flex-col items-center gap-2 pt-1 transition-all"
+                  style={{ transform: active ? "scale(1)" : "scale(0.78)", opacity: active ? 1 : 0.7 }}
                 >
-                  <span className={`overflow-hidden rounded-full ${active ? "ring-4 ring-white/70" : ""}`} style={{ width: active ? 96 : 74, height: active ? 96 : 74, background: "rgba(255,255,255,0.18)" }}>
+                  <span className={`overflow-hidden rounded-full ${active ? "ring-[5px] ring-white/70" : "ring-2 ring-white/20"}`} style={{ width: 92, height: 92, background: "rgba(255,255,255,0.14)" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={c.image} alt="" className="h-full w-full object-cover" />
                   </span>
-                  <span className="text-[11px] font-bold uppercase tracking-wide text-white">{c.name[locale]}</span>
+                  <span className="line-clamp-2 max-w-[104px] text-center text-[11px] font-bold uppercase leading-tight tracking-wide text-white">{c.name[locale]}</span>
                 </button>
               );
             })}
           </div>
-        </div>
 
-        {/* product carousel on rose panel */}
-        <div className="relative -mt-2 pb-6 pt-4" style={{ background: `linear-gradient(180deg, ${MAROON} 0%, ${ROSE} 22%, ${ROSE} 100%)` }}>
-          <div className="scrollbar-none flex snap-x snap-mandatory gap-4 overflow-x-auto px-[16%] py-3">
+          {/* large product showcase carousel on the rose dome */}
+          <div className="scrollbar-none mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-[14%] pb-2">
             {category.items.map((it) => (
               <button
                 key={it.id}
                 onClick={() => openProduct(it)}
-                className="flex w-[68%] shrink-0 snap-center flex-col items-center"
+                className="flex w-[72%] shrink-0 snap-center flex-col items-center"
               >
-                <span className="grid aspect-square w-full place-items-center overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.22)" }}>
+                <span
+                  className="grid aspect-square w-full place-items-center rounded-full"
+                  style={{ background: "rgba(255,255,255,0.28)", boxShadow: "inset 0 2px 18px rgba(255,255,255,0.25)" }}
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={it.image} alt="" className="h-[86%] w-[86%] object-contain drop-shadow-[0_16px_22px_rgba(0,0,0,0.35)]" />
+                  <img src={it.image} alt="" className="h-[82%] w-[82%] object-contain drop-shadow-[0_20px_26px_rgba(0,0,0,0.32)]" />
                 </span>
-                <span className="mt-4 text-center text-lg font-black text-white">{it.name[locale]}</span>
-                <span className="mt-1 text-sm font-bold text-white/90">{money(it.price, locale)}</span>
+                <span className="mt-5 text-center text-xl font-black text-white">{it.name[locale]}</span>
+                <span className="mt-1.5 text-base font-bold text-white/95">{money(it.price, locale)}</span>
               </button>
             ))}
           </div>
@@ -359,7 +406,7 @@ function HomeView({
       </div>
 
       {/* full list below the fold */}
-      <div className="px-4 pt-6">
+      <div className="px-4 pt-7">
         <h3 className="mb-3 text-lg font-black">{category.name[locale]}</h3>
         <div className="space-y-3">
           {category.items.map((it) => (
