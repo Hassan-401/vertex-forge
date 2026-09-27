@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useI18n } from "@/components/providers";
 import { MenuDesign1 } from "@/components/menu-design-1";
 import { MenuDesign2 } from "@/components/menu-design-2";
+import { MenuDesign3 } from "@/components/menu-design-3";
 import {
   MENU,
   RESTAURANT,
@@ -102,84 +103,6 @@ function Tags({ tags, locale }: { tags?: MenuTag[]; locale: Locale }) {
   );
 }
 
-
-/* ============================= DESIGN 3 — GRID =========================== */
-
-function DesignGrid({ locale }: { locale: Locale }) {
-  const [cat, setCat] = useState(0);
-  const category = MENU[cat];
-  const accent = "#c2410c";
-  return (
-    <div className="min-h-screen bg-neutral-100 pb-16 pt-12 text-neutral-900" dir={locale === "ar" ? "rtl" : "ltr"}>
-      <div className="mx-auto max-w-[440px]">
-        {/* banner */}
-        <div className="relative m-3 overflow-hidden rounded-3xl" style={{ background: accent }}>
-          <div className="flex items-center justify-between p-5 text-white">
-            <div>
-              <div className="text-[11px] font-bold uppercase tracking-wide text-white/70">{locale === "ar" ? "عرض اليوم" : "Today's offer"}</div>
-              <div className="mt-1 text-2xl font-black leading-tight">{locale === "ar" ? "خصم ٢٥٪" : "25% OFF"}</div>
-              <div className="mt-1 text-xs text-white/80">{locale === "ar" ? "على الوجبات المميزة" : "on signature meals"}</div>
-            </div>
-            <Emblem className="h-16 w-16" color="#fff" />
-          </div>
-        </div>
-
-        {/* logo card */}
-        <div className="mx-3 -mt-1 flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-black/5">
-          <span className="grid h-12 w-12 place-items-center rounded-xl" style={{ background: `${accent}1a` }}>
-            <Emblem className="h-8 w-8" color={accent} />
-          </span>
-          <div className="flex-1">
-            <div className="font-black">{locale === "ar" ? RESTAURANT.nameAr : RESTAURANT.name}</div>
-            <div className="text-[11px] text-neutral-500">{tl(RESTAURANT.location, locale)}</div>
-          </div>
-          <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-[10px] font-bold text-emerald-700">{locale === "ar" ? "مفتوح" : "open"}</span>
-        </div>
-
-        {/* circular cats */}
-        <div className="scrollbar-none flex gap-3 overflow-x-auto px-3 py-4">
-          {MENU.map((c, i) => (
-            <button key={c.id} onClick={() => setCat(i)} className="flex shrink-0 flex-col items-center gap-1.5">
-              <span className={`grid h-14 w-14 place-items-center overflow-hidden rounded-2xl border-2 bg-white transition ${i === cat ? "shadow-md" : "border-transparent"}`} style={i === cat ? { borderColor: accent } : {}}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.image} alt="" className="h-full w-full object-cover" />
-              </span>
-              <span className="max-w-14 truncate text-[10px] font-bold" style={{ color: i === cat ? accent : "#64748b" }}>{tl(c.name, locale)}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* 2-col grid */}
-        <div className="grid grid-cols-2 gap-3 px-3">
-          {category.items.map((it, idx) => (
-            <div key={it.id} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
-              <div className="relative aspect-square overflow-hidden bg-neutral-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image} alt="" className="h-full w-full object-cover" />
-                {idx % 3 === 0 && (
-                  <span className="absolute top-2 start-2 rounded-full bg-rose-600 px-2 py-0.5 text-[9px] font-bold text-white">
-                    {locale === "ar" ? "٢٠٪ خصم" : "20% OFF"}
-                  </span>
-                )}
-                <span className="absolute bottom-2 end-2"><Tags tags={it.tags} locale={locale} /></span>
-              </div>
-              <div className="p-3">
-                <h4 className="truncate text-sm font-extrabold">{tl(it.name, locale)}</h4>
-                <p className="mt-0.5 line-clamp-1 text-[11px] text-neutral-500">{tl(it.desc, locale)}</p>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-sm font-black" style={{ color: accent }}>{priceText(it.price, locale)}</span>
-                  <button className="grid h-7 w-7 place-items-center rounded-full text-white" style={{ background: accent }}>
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14" /></svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /* ============================= DESIGN 4 — DARK =========================== */
 
@@ -376,10 +299,10 @@ export function MenuPreview({ id }: { id: DesignId }) {
   // Designs 1 & 2 are full immersive ordering mini-apps — no preview chrome.
   if (id === "1") return <MenuDesign1 />;
   if (id === "2") return <MenuDesign2 />;
+  if (id === "3") return <MenuDesign3 />;
 
   const body = (() => {
     switch (id) {
-      case "3": return <DesignGrid locale={locale} />;
       case "4": return <DesignDark locale={locale} />;
       case "5": return <DesignPrinted locale={locale} />;
       case "6": return <DesignPoster locale={locale} />;
