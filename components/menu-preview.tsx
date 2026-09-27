@@ -7,8 +7,8 @@ import { MenuDesign1 } from "@/components/menu-design-1";
 import { MenuDesign2 } from "@/components/menu-design-2";
 import { MenuDesign3 } from "@/components/menu-design-3";
 import { MenuDesign4 } from "@/components/menu-design-4";
+import { MenuDesign5 } from "@/components/menu-design-5";
 import {
-  MENU,
   RESTAURANT,
   getDesign,
   tl,
@@ -64,66 +64,6 @@ function PreviewChrome({ id }: { id: DesignId }) {
           className="h-5 w-5 rounded-full border-2 border-white shadow"
           style={{ background: d.accent }}
         />
-      </div>
-    </div>
-  );
-}
-
-/* =========================== DESIGN 5 — PRINTED ========================== */
-
-function DesignPrinted({ locale }: { locale: Locale }) {
-  const ink = "#3a2f22";
-  return (
-    <div
-      className="min-h-screen pb-16 pt-16"
-      dir={locale === "ar" ? "rtl" : "ltr"}
-      style={{ background: "#efe6d4", color: ink }}
-    >
-      <div className="mx-auto max-w-3xl px-6">
-        {/* header */}
-        <div className="text-center">
-          <Emblem className="mx-auto h-14 w-14" color="#7c5e3b" />
-          <h1 className="mt-3 text-3xl font-black tracking-wide" style={{ fontFamily: "Georgia, serif" }}>
-            {locale === "ar" ? RESTAURANT.nameAr : RESTAURANT.name}
-          </h1>
-          <p className="mt-1 text-sm italic text-[#7c5e3b]">{tl(RESTAURANT.tagline, locale)}</p>
-          <div className="mx-auto mt-4 h-px w-40 bg-[#7c5e3b]/40" />
-        </div>
-
-        {/* categories as typographic sections */}
-        <div className="mt-10 grid gap-x-12 gap-y-10 sm:grid-cols-2">
-          {MENU.map((c) => (
-            <div key={c.id} className="break-inside-avoid">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="text-xl font-black" style={{ fontFamily: "Georgia, serif" }}>{tl(c.name, locale)}</span>
-                <span className="h-px flex-1 bg-[#7c5e3b]/30" />
-              </div>
-              <ul className="space-y-3">
-                {c.items.map((it) => (
-                  <li key={it.id}>
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-bold">{tl(it.name, locale)}</span>
-                      <span className="min-w-6 flex-1 border-b border-dotted border-[#7c5e3b]/40" />
-                      <span className="font-black text-[#7c5e3b]">{it.price}</span>
-                    </div>
-                    <p className="mt-0.5 text-xs text-[#6b5b45]">{tl(it.desc, locale)}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* footer */}
-        <div className="mt-12 border-t border-[#7c5e3b]/30 pt-5 text-center text-xs text-[#7c5e3b]">
-          <p>{tl(RESTAURANT.location, locale)} · {tl(RESTAURANT.hours, locale)}</p>
-          <div className="mt-3 flex items-center justify-center gap-3 text-lg">
-            <span>📷</span><span>📘</span><span>🎵</span><span>💬</span>
-          </div>
-          <p className="mt-2 text-[10px]">
-            {locale === "ar" ? "الأسعار شاملة الضريبة والخدمة" : "Prices include tax & service"}
-          </p>
-        </div>
       </div>
     </div>
   );
@@ -198,10 +138,10 @@ export function MenuPreview({ id }: { id: DesignId }) {
   if (id === "2") return <MenuDesign2 />;
   if (id === "3") return <MenuDesign3 />;
   if (id === "4") return <MenuDesign4 />;
+  if (id === "5") return <MenuDesign5 />;
 
   const body = (() => {
     switch (id) {
-      case "5": return <DesignPrinted locale={locale} />;
       case "6": return <DesignPoster locale={locale} />;
     }
   })();
