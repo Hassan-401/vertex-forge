@@ -382,48 +382,102 @@ function HomeView({
             })}
           </div>
 
-          {/* large product showcase carousel on the rose dome */}
-          <div className="scrollbar-none mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-[14%] pb-2">
-            {category.items.map((it) => (
-              <button
-                key={it.id}
-                onClick={() => openProduct(it)}
-                className="flex w-[72%] shrink-0 snap-center flex-col items-center"
-              >
-                <span
-                  className="grid aspect-square w-full place-items-center rounded-full"
-                  style={{ background: "rgba(255,255,255,0.28)", boxShadow: "inset 0 2px 18px rgba(255,255,255,0.25)" }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={it.image} alt="" className="h-[82%] w-[82%] object-contain drop-shadow-[0_20px_26px_rgba(0,0,0,0.32)]" />
-                </span>
-                <span className="mt-5 text-center text-xl font-black text-white">{it.name[locale]}</span>
-                <span className="mt-1.5 text-base font-bold text-white/95">{money(it.price, locale)}</span>
-              </button>
-            ))}
-          </div>
+          {/* large curved product showcase on the rose dome */}
+          <ShowcaseCarousel items={category.items} locale={locale} onPick={openProduct} catKey={cat} />
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* full list below the fold */}
-      <div className="px-4 pt-7">
-        <h3 className="mb-3 text-lg font-black">{category.name[locale]}</h3>
-        <div className="space-y-3">
-          {category.items.map((it) => (
-            <button key={it.id} onClick={() => openProduct(it)} className="flex w-full items-center gap-3 rounded-2xl bg-white p-3 text-start shadow-sm ring-1 ring-black/5">
-              <span className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-neutral-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image} alt="" className="h-full w-full object-cover" />
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block truncate font-bold">{it.name[locale]}</span>
-                <span className="mt-0.5 block line-clamp-1 text-xs text-neutral-500">{it.desc[locale]}</span>
-                <span className="mt-1 block font-black" style={{ color: RED }}>{money(it.price, locale)}</span>
-              </span>
-            </button>
-          ))}
+/* products laid out along the rose dome's arc: the centred card is high &
+ * large, neighbours dip down and shrink as they ride the curve outward. */
+function ShowcaseCarousel({
+  items,
+  locale,
+  onPick,
+  catKey,
+}: {
+  items: MenuItem[];
+  locale: Locale;
+  onPick: (it: MenuItem) => void;
+  catKey: number;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const raf = useRef(0);
+
+  const paint = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const rect = track.getBoundingClientRect();
+    const mid = rect.left + rect.width / 2;
+    const half = rect.width / 2 || 1;
+    cardRefs.current.forEach((el) => {
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const c = r.left + r.width / 2;
+      const norm = (c - mid) / half; // ~±1.1 for an immediate neighbour
+      const ad = Math.min(Math.abs(norm), 1.6);
+      const scale = Math.max(0.58, 1 - 0.3 * ad);
+      const ty = 30 * ad * ad; // parabola → dip down along the arc
+      const opacity = Math.max(0.5, 1 - 0.34 * ad);
+      el.style.transform = `translateY(${ty}px) scale(${scale})`;
+      el.style.opacity = String(opacity);
+      el.style.zIndex = String(100 - Math.round(ad * 50));
+    });
+  };
+
+  const onScroll = () => {
+    cancelAnimationFrame(raf.current);
+    raf.current = requestAnimationFrame(paint);
+  };
+
+  // repaint on mount, on category change (items swap → scroll resets), on resize
+  useEffect(() => {
+    trackRef.current?.scrollTo({ left: 0 });
+    paint();
+    const t1 = setTimeout(paint, 60);
+    const t2 = setTimeout(paint, 220);
+    window.addEventListener("resize", paint);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("resize", paint);
+      cancelAnimationFrame(raf.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [catKey]);
+
+  return (
+    <div
+      ref={trackRef}
+      onScroll={onScroll}
+      className="scrollbar-none mt-7 flex snap-x snap-mandatory overflow-x-auto pb-4 pt-1"
+    >
+      {/* leading spacer so the first card can sit dead-centre */}
+      <div className="shrink-0" style={{ width: "23%" }} aria-hidden />
+      {items.map((it, i) => (
+        <div key={it.id} className="flex shrink-0 snap-center justify-center px-1" style={{ width: "54%" }}>
+          <button
+            ref={(el) => { cardRefs.current[i] = el; }}
+            onClick={() => onPick(it)}
+            className="flex w-full flex-col items-center [will-change:transform]"
+            style={{ transformOrigin: "center center", transitionProperty: "opacity", transitionDuration: "150ms" }}
+          >
+            <span
+              className="grid aspect-square w-full place-items-center rounded-full"
+              style={{ background: "rgba(255,255,255,0.16)", boxShadow: "inset 0 2px 20px rgba(255,255,255,0.22)" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={it.image} alt="" className="h-[80%] w-[80%] object-contain drop-shadow-[0_18px_24px_rgba(0,0,0,0.34)]" />
+            </span>
+            <span className="mt-4 text-center text-lg font-black leading-tight text-white">{it.name[locale]}</span>
+            <span className="mt-1 text-sm font-bold text-white/95">{money(it.price, locale)}</span>
+          </button>
         </div>
-      </div>
+      ))}
+      <div className="shrink-0" style={{ width: "23%" }} aria-hidden />
     </div>
   );
 }
