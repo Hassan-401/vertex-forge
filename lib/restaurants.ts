@@ -154,14 +154,14 @@ export const MENU: MenuCategory[] = [
         },
         price: 80,
         kcal: 470,
-        image: `${F}/roll.webp`,
+        image: `${F}/roll.png`,
       },
     ],
   },
   {
     id: "chicken",
     name: { ar: "الدجاج المقلي", en: "Fried Chicken" },
-    image: `${F}/chicken-fried.jpg`,
+    image: `${F}/chicken-fried.png`,
     items: [
       {
         id: "fried-chicken",
@@ -172,7 +172,7 @@ export const MENU: MenuCategory[] = [
         },
         price: 130,
         kcal: 720,
-        image: `${F}/chicken-fried.jpg`,
+        image: `${F}/chicken-fried.png`,
         tags: ["spicy", "hot"],
       },
       {
@@ -377,7 +377,7 @@ export const MENU: MenuCategory[] = [
         },
         price: 90,
         kcal: 520,
-        image: `${F}/couscous.webp`,
+        image: `${F}/couscous.png`,
         tags: ["veg"],
       },
       {
@@ -445,14 +445,20 @@ export const DESIGNS: MenuDesign[] = [
     id: "1",
     thumb: "/restaurants/themes/theme-1.jpg",
     name: { ar: "التصميم الأول", en: "Design One" },
-    style: { ar: "كلاسيكي بأقسام دائرية", en: "Classic with circular categories" },
+    style: {
+      ar: "كلاسيكي بأقسام دائرية",
+      en: "Classic with circular categories",
+    },
     accent: "#b91c1c",
   },
   {
     id: "2",
     thumb: "/restaurants/themes/theme-2.jpg",
     name: { ar: "التصميم الثاني", en: "Design Two" },
-    style: { ar: "قائمة بصور وأزرار خيارات", en: "Image list with option buttons" },
+    style: {
+      ar: "قائمة بصور وأزرار خيارات",
+      en: "Image list with option buttons",
+    },
     accent: "#0f766e",
   },
   {
@@ -500,8 +506,14 @@ export const RESTAURANTS_COPY = {
   } as L,
   hero: {
     badge: { ar: "منيو إلكتروني QR", en: "QR digital menu" } as L,
-    titleA: { ar: "أنشئ منيو إلكتروني احترافي", en: "Build a professional digital menu" } as L,
-    titleHighlight: { ar: "لمطعمك أو كافيهك", en: "for your restaurant or café" } as L,
+    titleA: {
+      ar: "أنشئ منيو إلكتروني احترافي",
+      en: "Build a professional digital menu",
+    } as L,
+    titleHighlight: {
+      ar: "لمطعمك أو كافيهك",
+      en: "for your restaurant or café",
+    } as L,
     titleB: { ar: "باستخدام رمز QR", en: "powered by a QR code" } as L,
     subtitle: {
       ar: "منيو إلكتروني متكامل بتصميم عصري وأداء سريع، يعرض أصنافك وأسعارك بشكل أنيق ويحدّثها في أي وقت — دون أي رسوم سنوية أو تطبيقات إضافية.",
@@ -583,17 +595,26 @@ export const RESTAURANTS_COPY = {
   },
   faq: {
     eyebrow: { ar: "الأسئلة الشائعة", en: "FAQ" } as L,
-    title: { ar: "أسئلة عن المنيو الإلكتروني", en: "Digital menu questions" } as L,
+    title: {
+      ar: "أسئلة عن المنيو الإلكتروني",
+      en: "Digital menu questions",
+    } as L,
     items: [
       {
-        q: { ar: "كم يستغرق تجهيز المنيو الإلكتروني؟", en: "How long does the menu take?" },
+        q: {
+          ar: "كم يستغرق تجهيز المنيو الإلكتروني؟",
+          en: "How long does the menu take?",
+        },
         a: {
           ar: "نجهّز منيو مطعمك خلال ٤٨ ساعة بعد استلام الأصناف والأسعار والصور.",
           en: "We prepare your menu within 48 hours of receiving your items, prices and photos.",
         },
       },
       {
-        q: { ar: "هل يمكنني تعديل المنيو بنفسي؟", en: "Can I edit the menu myself?" },
+        q: {
+          ar: "هل يمكنني تعديل المنيو بنفسي؟",
+          en: "Can I edit the menu myself?",
+        },
         a: {
           ar: "نعم، تحصل على لوحة تحكم بسيطة لتعديل الأصناف والأسعار والصور في أي وقت.",
           en: "Yes, you get a simple dashboard to edit items, prices and photos any time.",
@@ -607,7 +628,10 @@ export const RESTAURANTS_COPY = {
         },
       },
       {
-        q: { ar: "كيف يصل العميل إلى المنيو؟", en: "How do guests reach the menu?" },
+        q: {
+          ar: "كيف يصل العميل إلى المنيو؟",
+          en: "How do guests reach the menu?",
+        },
         a: {
           ar: "عبر مسح رمز QR على الطاولة أو من خلال رابط المطعم على وسائل التواصل.",
           en: "By scanning the QR code on the table or through your restaurant link on social media.",
@@ -617,7 +641,10 @@ export const RESTAURANTS_COPY = {
   },
   contact: {
     eyebrow: { ar: "تواصل معنا", en: "Get in touch" } as L,
-    title: { ar: "جاهز تبدأ منيو مطعمك؟", en: "Ready to start your menu?" } as L,
+    title: {
+      ar: "جاهز تبدأ منيو مطعمك؟",
+      en: "Ready to start your menu?",
+    } as L,
     sub: {
       ar: "راسلنا على واتساب وسنجهّز لك منيو إلكتروني يليق بمطعمك خلال ٤٨ ساعة.",
       en: "Message us on WhatsApp and we'll craft a digital menu worthy of your restaurant within 48 hours.",
@@ -635,9 +662,15 @@ export const BRAND_LOGOS: { src: string; name: string }[] = [
   { src: "/restaurants/brands/bahr-elsamak.jpg", name: "Bahr El Samak" },
   { src: "/restaurants/brands/random.jpg", name: "Random Cafe" },
   { src: "/restaurants/brands/athar.jpg", name: "Athar" },
-  { src: "/restaurants/brands/shawarma-elasala.jpg", name: "Shawarma El Asala" },
+  {
+    src: "/restaurants/brands/shawarma-elasala.jpg",
+    name: "Shawarma El Asala",
+  },
   { src: "/restaurants/brands/nasamat.jpg", name: "Nasamat" },
-  { src: "/restaurants/brands/nasmet-elshorouk.jpg", name: "Nasmet El Shorouk" },
+  {
+    src: "/restaurants/brands/nasmet-elshorouk.jpg",
+    name: "Nasmet El Shorouk",
+  },
 ];
 
 /** helper to read a localized string given the active locale */

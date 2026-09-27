@@ -347,15 +347,17 @@ function HomeView({
           <div className="absolute left-1/2 top-[196px] h-[420px] w-[176%] -translate-x-1/2 rounded-[50%]" style={{ background: ROSE }} />
         </div>
 
-        <div className="relative pb-10">
+        <div className="relative flex flex-1 flex-col pb-6">
           {/* handle at the dome crown */}
           <div className="mx-auto mt-4 h-1.5 w-16 rounded-full bg-amber-400" />
 
           {/* curved category carousel on the maroon dome */}
           <CategoryCarousel locale={locale} cat={cat} setCat={setCat} />
 
-          {/* large curved product showcase on the rose dome */}
-          <ShowcaseCarousel items={category.items} locale={locale} onPick={openProduct} catKey={cat} />
+          {/* large curved product showcase, vertically centred in the rose */}
+          <div className="flex flex-1 flex-col justify-center">
+            <ShowcaseCarousel items={category.items} locale={locale} onPick={openProduct} catKey={cat} />
+          </div>
         </div>
       </div>
     </div>
