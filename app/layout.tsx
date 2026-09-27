@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cairo, Geist_Mono } from "next/font/google";
+import { Cairo, Geist_Mono, Poppins } from "next/font/google";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -7,6 +7,14 @@ const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+// rounded geometric sans used by the e-menu designs (Latin); Arabic falls
+// back to Cairo. Exposed as the --font-poppins CSS variable.
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const geistMono = Geist_Mono({
@@ -48,7 +56,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${cairo.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${cairo.variable} ${poppins.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

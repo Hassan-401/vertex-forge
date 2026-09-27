@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/components/providers";
 import { MenuDesign1 } from "@/components/menu-design-1";
+import { MenuDesign2 } from "@/components/menu-design-2";
 import {
   MENU,
   RESTAURANT,
@@ -101,92 +102,6 @@ function Tags({ tags, locale }: { tags?: MenuTag[]; locale: Locale }) {
   );
 }
 
-
-/* ============================= DESIGN 2 — LIST =========================== */
-
-function DesignList({ locale }: { locale: Locale }) {
-  const [cat, setCat] = useState(0);
-  const category = MENU[cat];
-  const accent = "#0f766e";
-  return (
-    <div className="min-h-screen bg-neutral-100 pb-24 pt-12 text-neutral-900" dir={locale === "ar" ? "rtl" : "ltr"}>
-      <div className="mx-auto max-w-[430px] bg-white">
-        {/* hero cover */}
-        <div className="relative h-44 overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={category.image} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/10" />
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 text-white">
-            <div className="flex items-center gap-2.5">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 backdrop-blur">
-                <Emblem className="h-8 w-8" color="#fff" />
-              </span>
-              <div>
-                <div className="text-lg font-black leading-none">{locale === "ar" ? RESTAURANT.nameAr : RESTAURANT.name}</div>
-                <div className="mt-1 text-[11px] text-white/80">{tl(RESTAURANT.location, locale)}</div>
-              </div>
-            </div>
-            <span className="rounded-full px-2.5 py-1 text-[10px] font-bold text-white" style={{ background: accent }}>
-              {tl(RESTAURANT.hours, locale)}
-            </span>
-          </div>
-        </div>
-
-        {/* pills */}
-        <div className="scrollbar-none sticky top-12 z-10 flex gap-2 overflow-x-auto bg-white px-4 py-3 shadow-sm">
-          {MENU.map((c, i) => (
-            <button
-              key={c.id}
-              onClick={() => setCat(i)}
-              className="shrink-0 rounded-full px-4 py-1.5 text-xs font-bold transition"
-              style={i === cat ? { background: accent, color: "#fff" } : { background: "#f1f5f4", color: "#475569" }}
-            >
-              {tl(c.name, locale)}
-            </button>
-          ))}
-        </div>
-
-        {/* list rows */}
-        <div className="divide-y divide-neutral-100">
-          {category.items.map((it) => (
-            <div key={it.id} className="flex gap-3 p-4">
-              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-neutral-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image} alt="" className="h-full w-full object-cover" />
-              </div>
-              <div className="flex min-w-0 flex-1 flex-col">
-                <div className="flex items-center gap-1.5">
-                  <h4 className="truncate font-extrabold">{tl(it.name, locale)}</h4>
-                  <Tags tags={it.tags} locale={locale} />
-                </div>
-                <p className="mt-1 line-clamp-2 text-xs leading-5 text-neutral-500">{tl(it.desc, locale)}</p>
-                <div className="mt-auto flex items-center justify-between pt-2">
-                  <span className="font-black" style={{ color: accent }}>{priceText(it.price, locale)}</span>
-                  <button
-                    className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-bold"
-                    style={{ borderColor: accent, color: accent }}
-                  >
-                    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14" /></svg>
-                    {locale === "ar" ? "خيارات" : "Options"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* bottom nav */}
-      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[430px] border-t border-neutral-200 bg-white/95 px-8 py-3 backdrop-blur">
-        <div className="flex items-center justify-between text-neutral-400">
-          {["🏠", "🍴", "🔍", "🛒"].map((e, i) => (
-            <span key={i} className={`text-xl ${i === 0 ? "opacity-100" : "opacity-50"}`}>{e}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /* ============================= DESIGN 3 — GRID =========================== */
 
@@ -458,12 +373,12 @@ function DesignPoster({ locale }: { locale: Locale }) {
 export function MenuPreview({ id }: { id: DesignId }) {
   const { locale } = useI18n();
 
-  // Design 1 is a full immersive ordering mini-app — no preview chrome.
+  // Designs 1 & 2 are full immersive ordering mini-apps — no preview chrome.
   if (id === "1") return <MenuDesign1 />;
+  if (id === "2") return <MenuDesign2 />;
 
   const body = (() => {
     switch (id) {
-      case "2": return <DesignList locale={locale} />;
       case "3": return <DesignGrid locale={locale} />;
       case "4": return <DesignDark locale={locale} />;
       case "5": return <DesignPrinted locale={locale} />;
