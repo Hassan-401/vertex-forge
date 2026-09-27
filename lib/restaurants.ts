@@ -577,7 +577,7 @@ export const RESTAURANTS_COPY = {
     title: { ar: "اختر تصميمك", en: "Choose your design" } as L,
     sub: {
       ar: "استعرض التصاميم الجاهزة لمنيو مطعم «ماستر شيف» واختر الشكل الذي يناسبك.",
-      en: "Preview the ready designs for the “Master Chief” demo menu and pick the look you like.",
+      en: "Preview the ready designs for the “Master Chief” menu and pick the look you like.",
     } as L,
     view: { ar: "شاهد المنيو", en: "View menu" } as L,
   },

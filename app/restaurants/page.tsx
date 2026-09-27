@@ -308,7 +308,7 @@ export default function RestaurantsPage() {
               </div>
             </Link>
             <div className="text-xs text-muted-foreground">
-              {RESTAURANT.nameAr} — {locale === "ar" ? "منيو تجريبي" : "demo menu"}
+              {tl(RESTAURANT.tagline, locale)}
             </div>
           </div>
           <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-border pt-5 text-xs text-muted-foreground sm:flex-row">

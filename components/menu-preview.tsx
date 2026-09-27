@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/components/providers";
+import { MenuDesign1 } from "@/components/menu-design-1";
 import {
   MENU,
   RESTAURANT,
@@ -67,7 +68,7 @@ function PreviewChrome({ id }: { id: DesignId }) {
           {locale === "ar" ? "كل التصاميم" : "All designs"}
         </Link>
         <div className="text-xs font-bold text-neutral-700">
-          {tl(d.name, locale)} · {locale === "ar" ? "منيو تجريبي" : "demo menu"}
+          {tl(d.name, locale)}
         </div>
         <span
           className="h-5 w-5 rounded-full border-2 border-white shadow"
@@ -100,118 +101,6 @@ function Tags({ tags, locale }: { tags?: MenuTag[]; locale: Locale }) {
   );
 }
 
-/* ============================ DESIGN 1 — CLASSIC ========================== */
-
-function DesignClassic({ locale }: { locale: Locale }) {
-  const [cat, setCat] = useState(0);
-  const category = MENU[cat];
-  const [featured, ...rest] = category.items;
-  return (
-    <div className="min-h-screen bg-neutral-50 pb-28 pt-14 text-neutral-900" dir={locale === "ar" ? "rtl" : "ltr"}>
-      <div className="mx-auto max-w-[430px]">
-        {/* curved header */}
-        <div className="relative overflow-hidden rounded-b-[2.5rem] bg-gradient-to-b from-red-700 to-red-600 px-5 pb-8 pt-6 text-white">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <Emblem className="h-11 w-11" color="#fff" />
-              <div>
-                <div className="text-lg font-black leading-none">
-                  {locale === "ar" ? RESTAURANT.nameAr : RESTAURANT.name}
-                </div>
-                <div className="mt-1 flex items-center gap-1 text-[11px] text-white/80">
-                  <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z" /></svg>
-                  {tl(RESTAURANT.location, locale)}
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg></span>
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-white/15"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></svg></span>
-            </div>
-          </div>
-          <p className="mt-4 text-sm text-white/90">{tl(RESTAURANT.tagline, locale)}</p>
-        </div>
-
-        {/* circular categories */}
-        <div className="scrollbar-none -mt-5 flex gap-3 overflow-x-auto px-4 pb-2 pt-2">
-          {MENU.map((c, i) => (
-            <button
-              key={c.id}
-              onClick={() => setCat(i)}
-              className="flex shrink-0 flex-col items-center gap-1.5"
-            >
-              <span
-                className={`grid h-16 w-16 place-items-center overflow-hidden rounded-full border-2 bg-white transition ${
-                  i === cat ? "border-red-600 shadow-lg" : "border-neutral-200"
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.image} alt="" className="h-full w-full object-cover" />
-              </span>
-              <span className={`max-w-16 truncate text-[10px] font-bold ${i === cat ? "text-red-600" : "text-neutral-500"}`}>
-                {tl(c.name, locale)}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {/* featured */}
-        <div className="px-4 pt-3">
-          <div className="relative overflow-hidden rounded-3xl bg-white shadow-md ring-1 ring-black/5">
-            <div className="aspect-[16/10] w-full overflow-hidden bg-neutral-100">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={featured.image} alt="" className="h-full w-full object-cover" />
-            </div>
-            <div className="p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-base font-extrabold">{tl(featured.name, locale)}</h3>
-                <Tags tags={featured.tags} locale={locale} />
-              </div>
-              <p className="mt-1 line-clamp-2 text-xs text-neutral-500">{tl(featured.desc, locale)}</p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="text-lg font-black text-red-600">{priceText(featured.price, locale)}</span>
-                <button className="rounded-full bg-red-600 px-4 py-2 text-xs font-bold text-white">
-                  {locale === "ar" ? "أضف للطلب" : "Add"}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* rest list */}
-        <div className="space-y-3 px-4 pt-4">
-          {rest.map((it) => (
-            <div key={it.id} className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-black/5">
-              <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-neutral-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image} alt="" className="h-full w-full object-cover" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1.5">
-                  <h4 className="truncate font-bold">{tl(it.name, locale)}</h4>
-                  <Tags tags={it.tags} locale={locale} />
-                </div>
-                <p className="mt-0.5 line-clamp-1 text-xs text-neutral-500">{tl(it.desc, locale)}</p>
-                <div className="mt-1.5 flex items-center justify-between">
-                  <span className="font-black text-red-600">{priceText(it.price, locale)}</span>
-                  {it.kcal && <span className="text-[10px] text-neutral-400">🔥 {it.kcal} kcal</span>}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* floating cart */}
-      <div className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2">
-        <button className="flex items-center gap-2 rounded-full bg-red-600 px-6 py-3 text-sm font-bold text-white shadow-xl">
-          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></svg>
-          {locale === "ar" ? "عرض الطلب" : "View order"}
-        </button>
-      </div>
-    </div>
-  );
-}
 
 /* ============================= DESIGN 2 — LIST =========================== */
 
@@ -568,9 +457,12 @@ function DesignPoster({ locale }: { locale: Locale }) {
 
 export function MenuPreview({ id }: { id: DesignId }) {
   const { locale } = useI18n();
+
+  // Design 1 is a full immersive ordering mini-app — no preview chrome.
+  if (id === "1") return <MenuDesign1 />;
+
   const body = (() => {
     switch (id) {
-      case "1": return <DesignClassic locale={locale} />;
       case "2": return <DesignList locale={locale} />;
       case "3": return <DesignGrid locale={locale} />;
       case "4": return <DesignDark locale={locale} />;
