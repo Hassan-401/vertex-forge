@@ -16,6 +16,11 @@ export const RED = "#a01722";
 export const MAROON = "#6f1420";
 export const ROSE = "#c06a6a";
 
+// Shared views (product / cart / branch / …) paint their primary colour from
+// this token so each design can re-theme them. A design sets `--menu-accent`
+// on its root; when unset it falls back to RED, so Designs 1–3 are unchanged.
+const ACCENT = "var(--menu-accent, #a01722)";
+
 // rounded geometric sans for the menus: Poppins for Latin, Cairo for Arabic.
 export const MENU_FONT = "var(--font-poppins), var(--font-cairo), system-ui, sans-serif";
 
@@ -90,7 +95,7 @@ export function Logo({ size = 44 }: { size?: number }) {
   return (
     <span
       className="grid shrink-0 place-items-center rounded-full font-black text-white"
-      style={{ width: size, height: size, background: RED, fontSize: size * 0.32 }}
+      style={{ width: size, height: size, background: ACCENT, fontSize: size * 0.32 }}
     >
       MC
     </span>
@@ -115,7 +120,7 @@ export function DetailBar({ L, title, onBack, onHome, onCart, cartCount }: { L: 
       <button onClick={onBack} aria-label={L("رجوع", "Back")} className="grid h-9 w-9 place-items-center"><span className="h-5 w-5 rtl:rotate-180">{I.back}</span></button>
       <div className="text-base font-black">{title}</div>
       <div className="flex items-center gap-1">
-        <button onClick={onHome} className="grid h-9 w-9 place-items-center" style={{ color: RED }}><span className="h-5 w-5">{I.home}</span></button>
+        <button onClick={onHome} className="grid h-9 w-9 place-items-center" style={{ color: ACCENT }}><span className="h-5 w-5">{I.home}</span></button>
         <button onClick={onCart} className="relative grid h-9 w-9 place-items-center">
           <span className="h-5 w-5">{I.bag}</span>
           {cartCount > 0 && <span className="absolute -top-0.5 end-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-rose-600 px-1 text-[9px] font-bold text-white">{cartCount}</span>}
@@ -164,7 +169,7 @@ export function ProductView({
       <div className="px-5">
         <div className="flex items-start justify-between gap-3">
           <h1 className="text-2xl font-black">{item.name[locale]}</h1>
-          <span className="whitespace-nowrap text-xl font-black" style={{ color: RED }}>{money(sizePrice(size), locale)}</span>
+          <span className="whitespace-nowrap text-xl font-black" style={{ color: ACCENT }}>{money(sizePrice(size), locale)}</span>
         </div>
 
         <div className="mt-3 flex items-center gap-3 text-sm">
@@ -177,12 +182,12 @@ export function ProductView({
         <p className="mt-3 text-sm leading-6 text-neutral-500">{item.desc[locale]}</p>
 
         <div className="mt-4 flex items-center gap-2 rounded-xl bg-neutral-100 px-4 py-3 text-xs text-rose-700">
-          <span className="h-4 w-4 shrink-0" style={{ color: RED }}>{I.bell}</span>
+          <span className="h-4 w-4 shrink-0" style={{ color: ACCENT }}>{I.bell}</span>
           {L("تُضاف رسوم خدمة 12٪ وضريبة 14٪.", "A 12% service charge and a 14% tax are added.")}
         </div>
 
         {/* sizes */}
-        <div className="mt-6 flex items-center gap-2 font-black" style={{ color: RED }}>
+        <div className="mt-6 flex items-center gap-2 font-black" style={{ color: ACCENT }}>
           <span>☕</span> {L("الحجم", "Size")}
         </div>
         <div className="mt-3 flex justify-between gap-3">
@@ -190,7 +195,7 @@ export function ProductView({
             const active = s.key === size;
             return (
               <button key={s.key} onClick={() => setSize(s.key)} className="flex flex-1 flex-col items-center gap-1.5">
-                <span className={`grid aspect-square w-full max-w-24 place-items-center overflow-hidden rounded-full border-2 transition ${active ? "" : "border-neutral-200"}`} style={active ? { borderColor: RED, boxShadow: `0 0 0 4px ${RED}22` } : {}}>
+                <span className={`grid aspect-square w-full max-w-24 place-items-center overflow-hidden rounded-full border-2 transition ${active ? "" : "border-neutral-200"}`} style={active ? { borderColor: ACCENT, boxShadow: `0 0 0 4px rgba(0,0,0,0.08)` } : {}}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.image} alt="" className="h-full w-full object-cover" />
                 </span>
@@ -202,7 +207,7 @@ export function ProductView({
         </div>
 
         {/* additions */}
-        <div className="mt-7 flex items-center gap-2 font-black" style={{ color: RED }}>
+        <div className="mt-7 flex items-center gap-2 font-black" style={{ color: ACCENT }}>
           <span>➕</span> {L("الإضافات", "Additions")}
         </div>
         <div className="mt-3 grid grid-cols-3 gap-3">
@@ -213,7 +218,7 @@ export function ProductView({
                 <span className="mb-6 grid h-12 w-full place-items-center text-3xl">{a.emoji}</span>
                 <span className="block text-sm font-bold">{a[locale]}</span>
                 <span className="mt-0.5 block text-xs text-neutral-500">{money(a.price, locale)}</span>
-                <span className={`absolute bottom-3 end-3 grid h-5 w-5 place-items-center rounded-md border-2 ${on ? "text-white" : "border-neutral-300"}`} style={on ? { background: RED, borderColor: RED } : {}}>
+                <span className={`absolute bottom-3 end-3 grid h-5 w-5 place-items-center rounded-md border-2 ${on ? "text-white" : "border-neutral-300"}`} style={on ? { background: ACCENT, borderColor: ACCENT } : {}}>
                   {on && <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>}
                 </span>
               </button>
@@ -225,14 +230,14 @@ export function ProductView({
       {/* bottom action bar */}
       <div className="fixed inset-x-0 bottom-0 z-40 mx-auto flex max-w-[480px] items-center gap-3 border-t border-neutral-200 bg-white p-3">
         <div className="flex items-center gap-3 rounded-full bg-neutral-100 px-2 py-1.5">
-          <button onClick={() => setQty((q) => q + 1)} className="grid h-8 w-8 place-items-center rounded-full text-white" style={{ background: RED }}>+</button>
+          <button onClick={() => setQty((q) => q + 1)} className="grid h-8 w-8 place-items-center rounded-full text-white" style={{ background: ACCENT }}>+</button>
           <span className="min-w-4 text-center font-black">{qty}</span>
-          <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="grid h-8 w-8 place-items-center rounded-full text-white" style={{ background: RED }}>−</button>
+          <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="grid h-8 w-8 place-items-center rounded-full text-white" style={{ background: ACCENT }}>−</button>
         </div>
         <button
           onClick={() => add({ item, size: L(SIZES.find((s) => s.key === size)!.ar, SIZES.find((s) => s.key === size)!.en), sizePrice: sizePrice(size), additions: chosenAdds, qty })}
           className="flex flex-1 items-center justify-center gap-2 rounded-full py-3.5 text-sm font-black text-white"
-          style={{ background: RED }}
+          style={{ background: ACCENT }}
         >
           {L("أضف إلى السلة", "Add to Cart")} · {money(unit * qty, locale)}
         </button>
@@ -274,7 +279,7 @@ export function CartView({
         <div className="grid place-items-center px-6 py-24 text-center">
           <div className="text-6xl">🛒</div>
           <p className="mt-4 font-bold text-neutral-500">{L("سلتك فارغة", "Your cart is empty")}</p>
-          <button onClick={onHome} className="mt-5 rounded-full px-6 py-2.5 text-sm font-bold text-white" style={{ background: RED }}>
+          <button onClick={onHome} className="mt-5 rounded-full px-6 py-2.5 text-sm font-bold text-white" style={{ background: ACCENT }}>
             {L("تصفح المنيو", "Browse the menu")}
           </button>
         </div>
@@ -300,11 +305,11 @@ export function CartView({
                     </div>
                     <div className="mt-2 flex items-center justify-between">
                       <div className="flex items-center gap-2 rounded-full bg-neutral-100 px-1.5 py-1">
-                        <button onClick={() => setQty(l.uid, 1)} className="grid h-6 w-6 place-items-center rounded-full text-white" style={{ background: RED }}>+</button>
+                        <button onClick={() => setQty(l.uid, 1)} className="grid h-6 w-6 place-items-center rounded-full text-white" style={{ background: ACCENT }}>+</button>
                         <span className="min-w-3 text-center text-sm font-bold">{l.qty}</span>
-                        <button onClick={() => setQty(l.uid, -1)} className="grid h-6 w-6 place-items-center rounded-full text-white" style={{ background: RED }}>−</button>
+                        <button onClick={() => setQty(l.uid, -1)} className="grid h-6 w-6 place-items-center rounded-full text-white" style={{ background: ACCENT }}>−</button>
                       </div>
-                      <span className="font-black" style={{ color: RED }}>{money(line, locale)}</span>
+                      <span className="font-black" style={{ color: ACCENT }}>{money(line, locale)}</span>
                     </div>
                   </div>
                 </div>
@@ -315,9 +320,9 @@ export function CartView({
           <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[480px] border-t border-neutral-200 bg-white p-4">
             <div className="mb-3 flex items-center justify-between font-black">
               <span>{L("الإجمالي", "Total")}</span>
-              <span style={{ color: RED }}>{money(total, locale)}</span>
+              <span style={{ color: ACCENT }}>{money(total, locale)}</span>
             </div>
-            <button onClick={onOrder} className="w-full rounded-full py-3.5 text-sm font-black text-white" style={{ background: RED }}>
+            <button onClick={onOrder} className="w-full rounded-full py-3.5 text-sm font-black text-white" style={{ background: ACCENT }}>
               {L("تأكيد الطلب", "Place Order")}
             </button>
           </div>
@@ -407,7 +412,7 @@ export function WaiterSheet({ L, onClose, setToast }: { L: (a: string, e: string
         <button
           onClick={() => { onClose(); setToast(L(`تم استدعاء النادل إلى الطاولة ${table} 🛎️`, `Waiter called to table ${table} 🛎️`)); }}
           className="mt-5 flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-sm font-black text-white"
-          style={{ background: RED }}
+          style={{ background: ACCENT }}
         >
           <span className="h-4 w-4">{I.bell}</span> {L("اطلب الآن", "Call Now")}
         </button>
@@ -431,7 +436,7 @@ export function WifiView({ L, onBack, onHome, setToast }: { L: (a: string, e: st
       <div className="p-5">
         <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-black/5">
           <div className="grid place-items-center">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl text-white" style={{ background: RED }}><span className="h-7 w-7">{I.wifi}</span></span>
+            <span className="grid h-14 w-14 place-items-center rounded-2xl text-white" style={{ background: ACCENT }}><span className="h-7 w-7">{I.wifi}</span></span>
             <h2 className="mt-3 text-lg font-black">{L("الاتصال بالواي فاي", "Connect to WiFi")}</h2>
             <p className="text-xs text-neutral-500">{L("بيانات شبكتنا موضّحة بالأسفل", "Here are the WiFi credentials for our network")}</p>
           </div>
@@ -452,13 +457,13 @@ export function WifiView({ L, onBack, onHome, setToast }: { L: (a: string, e: st
           <ol className="mt-5 space-y-2.5">
             {steps.map((s, i) => (
               <li key={i} className="flex items-center gap-3 text-sm text-neutral-600">
-                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-white" style={{ background: RED }}>{i + 1}</span>
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-white" style={{ background: ACCENT }}>{i + 1}</span>
                 {s}
               </li>
             ))}
           </ol>
 
-          <button onClick={onBack} className="mt-6 w-full rounded-full py-3.5 text-sm font-black text-white" style={{ background: RED }}>{L("تم", "Done")}</button>
+          <button onClick={onBack} className="mt-6 w-full rounded-full py-3.5 text-sm font-black text-white" style={{ background: ACCENT }}>{L("تم", "Done")}</button>
         </div>
       </div>
     </div>
@@ -470,7 +475,7 @@ export function WifiView({ L, onBack, onHome, setToast }: { L: (a: string, e: st
 export function BranchView({ L, locale, onBack, onHome, openRate }: { L: (a: string, e: string) => string; locale: Locale; onBack: () => void; onHome: () => void; openRate: () => void; }) {
   const rows = [
     { icon: I.phone, label: L("الهاتف", "Phone"), value: "01285644414", trail: I.chevron },
-    { icon: I.pin, label: L("العنوان", "Address"), value: RESTAURANT.location[locale], trail: <span style={{ color: RED }}>{I.nav}</span> },
+    { icon: I.pin, label: L("العنوان", "Address"), value: RESTAURANT.location[locale], trail: <span style={{ color: ACCENT }}>{I.nav}</span> },
     { icon: I.doc, label: L("الشروط والأحكام", "Terms & Conditions"), value: L("عرض الشروط والأحكام", "View terms and conditions"), trail: I.chevron },
     { icon: I.star, label: L("قيّمنا", "Rate Us"), value: L("قيّمنا لتحسين خدمتنا", "Rate Us to improve our service"), trail: I.chevron, on: openRate },
     { icon: I.info, label: L("عن الفرع", "About Branch"), value: L("اعرف المزيد عنا", "Learn more about us"), trail: I.chevron },
@@ -487,7 +492,7 @@ export function BranchView({ L, locale, onBack, onHome, openRate }: { L: (a: str
         <div className="space-y-3">
           {rows.map((r, i) => (
             <button key={i} onClick={r.on} className="flex w-full items-center gap-3 rounded-2xl bg-white p-4 text-start shadow-sm ring-1 ring-black/5">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-rose-100" style={{ color: RED }}><span className="h-5 w-5">{r.icon}</span></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-rose-100" style={{ color: ACCENT }}><span className="h-5 w-5">{r.icon}</span></span>
               <span className="min-w-0 flex-1">
                 <span className="block text-xs text-neutral-400">{r.label}</span>
                 <span className="block truncate font-bold">{r.value}</span>
@@ -498,14 +503,14 @@ export function BranchView({ L, locale, onBack, onHome, openRate }: { L: (a: str
 
           <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5">
             <div className="mb-3 flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-rose-100" style={{ color: RED }}><span className="h-5 w-5">{I.clock}</span></span>
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-rose-100" style={{ color: ACCENT }}><span className="h-5 w-5">{I.clock}</span></span>
               <span className="font-black">{L("ساعات العمل", "Working Hours")}</span>
             </div>
             <ul className="text-sm">
               {HOURS.map((d, i) => {
                 const today = i === TODAY_IDX;
                 return (
-                  <li key={i} className="flex items-center justify-between py-1.5" style={today ? { color: RED, fontWeight: 800 } : { color: "#525252" }}>
+                  <li key={i} className="flex items-center justify-between py-1.5" style={today ? { color: ACCENT, fontWeight: 800 } : { color: "#525252" }}>
                     <span>{d[locale]}</span>
                     <span dir="ltr">{d.h}</span>
                   </li>
@@ -590,7 +595,7 @@ export function RateView({ L, onBack, onHome, setToast }: { L: (a: string, e: st
             {starRows.map((r, idx) => (
               <div key={r.k} className="rounded-xl bg-neutral-50 p-3 ring-1 ring-black/5">
                 <div className="mb-2 flex items-center gap-2 text-sm font-bold">
-                  <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: RED }}>{idx + 1}</span>
+                  <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: ACCENT }}>{idx + 1}</span>
                   {r.label}
                 </div>
                 <Stars value={q[r.k]} onChange={set(r.k)} />
@@ -599,7 +604,7 @@ export function RateView({ L, onBack, onHome, setToast }: { L: (a: string, e: st
             {emojiRows.map((r, idx) => (
               <div key={r.k} className="rounded-xl bg-neutral-50 p-3 ring-1 ring-black/5">
                 <div className="mb-2 flex items-center gap-2 text-sm font-bold">
-                  <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: RED }}>{idx + 4}</span>
+                  <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: ACCENT }}>{idx + 4}</span>
                   {r.label}
                 </div>
                 <Emojis value={q[r.k]} onChange={set(r.k)} />
@@ -617,7 +622,7 @@ export function RateView({ L, onBack, onHome, setToast }: { L: (a: string, e: st
       </div>
 
       <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[480px] border-t border-neutral-200 bg-white p-4">
-        <button onClick={() => { setToast(L("شكرًا لتقييمك! ⭐", "Thanks for your feedback! ⭐")); onHome(); }} className="w-full rounded-full py-3.5 text-sm font-black text-white" style={{ background: RED }}>
+        <button onClick={() => { setToast(L("شكرًا لتقييمك! ⭐", "Thanks for your feedback! ⭐")); onHome(); }} className="w-full rounded-full py-3.5 text-sm font-black text-white" style={{ background: ACCENT }}>
           {L("إرسال", "Submit")}
         </button>
       </div>

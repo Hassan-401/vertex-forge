@@ -659,16 +659,16 @@ export const BRAND_LOGOS: { src: string; name: string }[] = [
   { src: "/restaurants/brands/woods.png", name: "Woods Cafe" },
   { src: "/restaurants/brands/tareqa.png", name: "Tareqa Cafe" },
   { src: "/restaurants/brands/alfares.png", name: "El Fares" },
-  { src: "/restaurants/brands/bahr-elsamak.jpg", name: "Bahr El Samak" },
-  { src: "/restaurants/brands/random.jpg", name: "Random Cafe" },
-  { src: "/restaurants/brands/athar.jpg", name: "Athar" },
+  { src: "/restaurants/brands/bahr-elsamak.png", name: "Bahr El Samak" },
+  { src: "/restaurants/brands/random.png", name: "Random Cafe" },
+  { src: "/restaurants/brands/athar.png", name: "Athar" },
   {
-    src: "/restaurants/brands/shawarma-elasala.jpg",
+    src: "/restaurants/brands/shawarma-elasala.png",
     name: "Shawarma El Asala",
   },
-  { src: "/restaurants/brands/nasamat.jpg", name: "Nasamat" },
+  { src: "/restaurants/brands/nasamat.png", name: "Nasamat" },
   {
-    src: "/restaurants/brands/nasmet-elshorouk.jpg",
+    src: "/restaurants/brands/nasmet-elshorouk.png",
     name: "Nasmet El Shorouk",
   },
 ];

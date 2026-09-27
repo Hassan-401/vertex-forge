@@ -6,6 +6,7 @@ import { useI18n } from "@/components/providers";
 import { MenuDesign1 } from "@/components/menu-design-1";
 import { MenuDesign2 } from "@/components/menu-design-2";
 import { MenuDesign3 } from "@/components/menu-design-3";
+import { MenuDesign4 } from "@/components/menu-design-4";
 import {
   MENU,
   RESTAURANT,
@@ -14,7 +15,6 @@ import {
   type DesignId,
   type MenuCategory,
   type MenuItem,
-  type MenuTag,
 } from "@/lib/restaurants";
 import type { Locale } from "@/lib/content";
 
@@ -23,18 +23,6 @@ import type { Locale } from "@/lib/content";
  * All read from the same MENU data; only the presentation differs so a client
  * can pick a look on the /restaurants "choose your design" grid.
  * ------------------------------------------------------------------------ */
-
-const tagEmoji: Record<MenuTag, string> = {
-  spicy: "🌶️",
-  veg: "🌱",
-  hot: "🔥",
-  new: "✨",
-  offer: "٪",
-};
-
-function priceText(p: number, locale: Locale) {
-  return `${p} ${tl(RESTAURANT.currency, locale)}`;
-}
 
 /* helmet emblem */
 function Emblem({ className, color = "currentColor" }: { className?: string; color?: string }) {
@@ -76,97 +64,6 @@ function PreviewChrome({ id }: { id: DesignId }) {
           className="h-5 w-5 rounded-full border-2 border-white shadow"
           style={{ background: d.accent }}
         />
-      </div>
-    </div>
-  );
-}
-
-function Tags({ tags, locale }: { tags?: MenuTag[]; locale: Locale }) {
-  if (!tags?.length) return null;
-  return (
-    <span className="inline-flex items-center gap-1">
-      {tags.map((tg) =>
-        tg === "new" || tg === "offer" ? (
-          <span
-            key={tg}
-            className="rounded-full bg-rose-600 px-1.5 py-0.5 text-[9px] font-bold text-white"
-          >
-            {tg === "new" ? (locale === "ar" ? "جديد" : "New") : locale === "ar" ? "عرض" : "Offer"}
-          </span>
-        ) : (
-          <span key={tg} className="text-sm leading-none">
-            {tagEmoji[tg]}
-          </span>
-        ),
-      )}
-    </span>
-  );
-}
-
-
-/* ============================= DESIGN 4 — DARK =========================== */
-
-function DesignDark({ locale }: { locale: Locale }) {
-  const [cat, setCat] = useState(0);
-  const category = MENU[cat];
-  const gold = "#d4a017";
-  return (
-    <div className="min-h-screen bg-neutral-950 pb-16 pt-12 text-neutral-100" dir={locale === "ar" ? "rtl" : "ltr"}>
-      <div className="mx-auto max-w-[440px]">
-        {/* cover */}
-        <div className="relative h-52 overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={category.image} alt="" className="h-full w-full object-cover opacity-70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-5">
-            <div className="flex items-center gap-3">
-              <Emblem className="h-12 w-12" color={gold} />
-              <div>
-                <div className="text-xl font-black" style={{ color: gold }}>{locale === "ar" ? RESTAURANT.nameAr : RESTAURANT.name}</div>
-                <div className="text-[11px] text-neutral-300">{tl(RESTAURANT.tagline, locale)}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* tabs */}
-        <div className="scrollbar-none flex gap-5 overflow-x-auto border-b border-white/10 px-5 py-3">
-          {MENU.map((c, i) => (
-            <button
-              key={c.id}
-              onClick={() => setCat(i)}
-              className="shrink-0 border-b-2 pb-2 text-sm font-bold transition"
-              style={i === cat ? { color: gold, borderColor: gold } : { color: "#8a8a8a", borderColor: "transparent" }}
-            >
-              {tl(c.name, locale)}
-            </button>
-          ))}
-        </div>
-
-        {/* cards */}
-        <div className="space-y-4 p-5">
-          {category.items.map((it) => (
-            <div key={it.id} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-3">
-              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image} alt="" className="h-full w-full object-cover" />
-              </div>
-              <div className="flex min-w-0 flex-1 flex-col">
-                <div className="flex items-center gap-1.5">
-                  <h4 className="truncate font-extrabold">{tl(it.name, locale)}</h4>
-                  <Tags tags={it.tags} locale={locale} />
-                </div>
-                <p className="mt-1 line-clamp-2 text-xs leading-5 text-neutral-400">{tl(it.desc, locale)}</p>
-                <div className="mt-auto flex items-center justify-between pt-2">
-                  <span className="font-black" style={{ color: gold }}>{priceText(it.price, locale)}</span>
-                  <button className="rounded-full border px-3 py-1 text-xs font-bold" style={{ borderColor: gold, color: gold }}>
-                    {locale === "ar" ? "أضف" : "Add"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
@@ -300,10 +197,10 @@ export function MenuPreview({ id }: { id: DesignId }) {
   if (id === "1") return <MenuDesign1 />;
   if (id === "2") return <MenuDesign2 />;
   if (id === "3") return <MenuDesign3 />;
+  if (id === "4") return <MenuDesign4 />;
 
   const body = (() => {
     switch (id) {
-      case "4": return <DesignDark locale={locale} />;
       case "5": return <DesignPrinted locale={locale} />;
       case "6": return <DesignPoster locale={locale} />;
     }
