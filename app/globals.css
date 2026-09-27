@@ -320,3 +320,20 @@
     transform: translateY(-14px);
   }
 }
+
+/* book page-turn used by the display-only menu (Design 6) */
+@keyframes menu6-page-flip {
+  from {
+    transform: perspective(1400px) rotateY(-32deg) scale(0.96);
+    opacity: 0.25;
+  }
+  to {
+    transform: perspective(1400px) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.menu6-flip {
+  transform-origin: left center;
+  animation: menu6-page-flip 0.5s ease;
+}
