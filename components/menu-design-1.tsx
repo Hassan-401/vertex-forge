@@ -196,10 +196,11 @@ export function MenuDesign1() {
         <button
           onClick={() => setWaiterOpen(true)}
           aria-label={L("نداء النادل", "Call waiter")}
-          className="absolute bottom-5 z-40 grid h-14 w-14 place-items-center rounded-full text-white shadow-xl transition active:scale-95"
-          style={{ background: RED, insetInlineEnd: 20 }}
+          className="absolute bottom-5 z-40 grid h-16 w-16 place-items-center rounded-full bg-white shadow-xl ring-1 ring-black/5 transition active:scale-95"
+          style={{ insetInlineEnd: 18 }}
         >
-          <span className="h-6 w-6">{I.bell}</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/restaurants/bell.gif" alt="" className="h-11 w-11 object-contain" />
         </button>
       )}
 
@@ -322,22 +323,10 @@ function HomeView({
   openSide: () => void;
   cartCount: number;
 }) {
-  const catRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const category = MENU[cat];
 
-  const selectCat = (i: number) => {
-    setCat(i);
-    catRefs.current[i]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  };
-
-  // centre the active category once the carousel is mounted
-  useEffect(() => {
-    catRefs.current[cat]?.scrollIntoView({ inline: "center", block: "nearest" });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
-    <div className="bg-white pb-28">
+    <div className="flex min-h-full flex-col bg-white">
       <TopBar L={L} locale={locale} onCart={openCart} onMenu={openSide} cartCount={cartCount} />
 
       {/* hero headline over faint food doodles */}
@@ -348,44 +337,138 @@ function HomeView({
         </p>
       </div>
 
-      {/* layered curved domes: maroon (categories) over rose (showcase) */}
-      <div className="relative overflow-hidden">
-        {/* dome backdrops */}
+      {/* layered curved domes fill the rest of the screen (no empty space) */}
+      <div className="relative flex flex-1 flex-col overflow-hidden">
+        {/* dome backdrops: maroon crown, then rose filling to the bottom
+            with a convex arch rising into the maroon */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-0 h-[430px] w-[152%] -translate-x-1/2 rounded-[50%]" style={{ background: MAROON }} />
-          <div className="absolute left-1/2 top-[206px] h-[840px] w-[176%] -translate-x-1/2 rounded-[50%]" style={{ background: ROSE }} />
+          <div className="absolute inset-x-0 bottom-0 top-[250px]" style={{ background: ROSE }} />
+          <div className="absolute left-1/2 top-[196px] h-[420px] w-[176%] -translate-x-1/2 rounded-[50%]" style={{ background: ROSE }} />
         </div>
 
-        <div className="relative pb-9">
+        <div className="relative pb-10">
           {/* handle at the dome crown */}
           <div className="mx-auto mt-4 h-1.5 w-16 rounded-full bg-amber-400" />
 
-          {/* category carousel on the maroon dome */}
-          <div className="scrollbar-none mt-5 flex items-start gap-4 overflow-x-auto px-[32%] pb-1">
-            {MENU.map((c, i) => {
-              const active = i === cat;
-              return (
-                <button
-                  key={c.id}
-                  ref={(el) => { catRefs.current[i] = el; }}
-                  onClick={() => selectCat(i)}
-                  className="flex shrink-0 snap-center flex-col items-center gap-2 pt-1 transition-all"
-                  style={{ transform: active ? "scale(1)" : "scale(0.78)", opacity: active ? 1 : 0.7 }}
-                >
-                  <span className={`overflow-hidden rounded-full ${active ? "ring-[5px] ring-white/70" : "ring-2 ring-white/20"}`} style={{ width: 92, height: 92, background: "rgba(255,255,255,0.14)" }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={c.image} alt="" className="h-full w-full object-cover" />
-                  </span>
-                  <span className="line-clamp-2 max-w-[104px] text-center text-[11px] font-bold uppercase leading-tight tracking-wide text-white">{c.name[locale]}</span>
-                </button>
-              );
-            })}
-          </div>
+          {/* curved category carousel on the maroon dome */}
+          <CategoryCarousel locale={locale} cat={cat} setCat={setCat} />
 
           {/* large curved product showcase on the rose dome */}
           <ShowcaseCarousel items={category.items} locale={locale} onPick={openProduct} catKey={cat} />
         </div>
       </div>
+    </div>
+  );
+}
+
+/* categories laid along the maroon dome's arc — same curved scroll as the
+ * products; the card nearest the centre becomes the active category. */
+function CategoryCarousel({
+  locale,
+  cat,
+  setCat,
+}: {
+  locale: Locale;
+  cat: number;
+  setCat: (n: number) => void;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const raf = useRef(0);
+  const settle = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lockUntil = useRef(0); // suppress auto-select during a programmatic scroll
+
+  const paint = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const rect = track.getBoundingClientRect();
+    const mid = rect.left + rect.width / 2;
+    const half = rect.width / 2 || 1;
+    cardRefs.current.forEach((el) => {
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const c = r.left + r.width / 2;
+      const norm = (c - mid) / half;
+      const ad = Math.min(Math.abs(norm), 1.8);
+      const scale = Math.max(0.6, 1 - 0.24 * ad);
+      const ty = 32 * ad * ad; // dip down along the dome arc
+      const opacity = Math.max(0.5, 1 - 0.32 * ad);
+      el.style.transform = `translateY(${ty}px) scale(${scale})`;
+      el.style.opacity = String(opacity);
+      el.style.zIndex = String(20 - Math.round(ad * 10));
+    });
+  };
+
+  const nearestIndex = () => {
+    const track = trackRef.current;
+    if (!track) return cat;
+    const rect = track.getBoundingClientRect();
+    const mid = rect.left + rect.width / 2;
+    let best = cat;
+    let bestD = Infinity;
+    cardRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const c = r.left + r.width / 2;
+      const d = Math.abs(c - mid);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  };
+
+  const centerTo = (i: number, smooth = true) => {
+    lockUntil.current = Date.now() + 600;
+    cardRefs.current[i]?.scrollIntoView({ behavior: smooth ? "smooth" : "auto", inline: "center", block: "nearest" });
+  };
+
+  const onScroll = () => {
+    cancelAnimationFrame(raf.current);
+    raf.current = requestAnimationFrame(paint);
+    if (settle.current) clearTimeout(settle.current);
+    settle.current = setTimeout(() => {
+      if (Date.now() < lockUntil.current) return;
+      const n = nearestIndex();
+      if (n !== cat) setCat(n);
+    }, 130);
+  };
+
+  useEffect(() => {
+    centerTo(cat, false);
+    paint();
+    const t = setTimeout(paint, 80);
+    window.addEventListener("resize", paint);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", paint);
+      cancelAnimationFrame(raf.current);
+      if (settle.current) clearTimeout(settle.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div ref={trackRef} onScroll={onScroll} className="scrollbar-none mt-5 flex snap-x snap-mandatory overflow-x-auto pb-1">
+      <div className="shrink-0" style={{ width: "34%" }} aria-hidden />
+      {MENU.map((c, i) => {
+        const active = i === cat;
+        return (
+          <button
+            key={c.id}
+            ref={(el) => { cardRefs.current[i] = el; }}
+            onClick={() => { setCat(i); centerTo(i); }}
+            className="flex shrink-0 snap-center flex-col items-center gap-2 pt-1 [will-change:transform]"
+            style={{ width: "32%", transformOrigin: "center center", transitionProperty: "opacity", transitionDuration: "150ms" }}
+          >
+            <span className={`overflow-hidden rounded-full ${active ? "ring-[5px] ring-white/70" : "ring-2 ring-white/20"}`} style={{ width: 88, height: 88, background: "rgba(255,255,255,0.14)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={c.image} alt="" className="h-full w-full object-cover" />
+            </span>
+            <span className="line-clamp-2 max-w-[100px] text-center text-[11px] font-bold uppercase leading-tight tracking-wide text-white">{c.name[locale]}</span>
+          </button>
+        );
+      })}
+      <div className="shrink-0" style={{ width: "34%" }} aria-hidden />
     </div>
   );
 }
@@ -424,7 +507,7 @@ function ShowcaseCarousel({
       const opacity = Math.max(0.5, 1 - 0.34 * ad);
       el.style.transform = `translateY(${ty}px) scale(${scale})`;
       el.style.opacity = String(opacity);
-      el.style.zIndex = String(100 - Math.round(ad * 50));
+      el.style.zIndex = String(20 - Math.round(ad * 10));
     });
   };
 
@@ -729,18 +812,22 @@ function SideMenu({
     { icon: I.star, label: L("قيّمنا", "Rate Us"), on: onRate },
   ];
   return (
-    <div className="absolute inset-0 z-50 grid place-items-center bg-black/50 px-6 backdrop-blur-sm" onClick={onClose}>
-      <div className="w-full max-w-sm rounded-3xl border border-white/40 bg-white/25 p-4 shadow-2xl backdrop-blur-xl" onClick={(e) => e.stopPropagation()}>
-        <div className="space-y-3">
+    <div
+      className="absolute inset-0 z-50 grid place-items-center px-6"
+      style={{ background: "linear-gradient(160deg, #4a0e17 0%, #2c0810 100%)" }}
+      onClick={onClose}
+    >
+      <div className="w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+        <div className="space-y-3.5">
           {rows.map((r, i) => (
-            <button key={i} onClick={r.on} className="flex w-full items-center gap-3 rounded-2xl border border-white/40 bg-white/40 px-4 py-3.5 text-start font-bold text-white shadow-sm transition hover:bg-white/60">
-              <span className="h-5 w-5">{r.icon}</span>
+            <button key={i} onClick={r.on} className="flex w-full items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-start font-bold text-white shadow-lg transition active:scale-[0.98] hover:bg-white/15">
+              <span className="h-5 w-5 text-amber-300">{r.icon}</span>
               <span className="flex-1">{r.label}</span>
-              <span className="h-4 w-4 opacity-80 rtl:rotate-180">{I.chevron}</span>
+              <span className="h-4 w-4 opacity-70 rtl:rotate-180">{I.chevron}</span>
             </button>
           ))}
         </div>
-        <button onClick={onClose} className="mx-auto mt-4 grid h-11 w-11 place-items-center rounded-full bg-white/70 text-neutral-800 shadow">✕</button>
+        <button onClick={onClose} className="mx-auto mt-6 grid h-12 w-12 place-items-center rounded-full bg-white/15 text-white shadow-lg ring-1 ring-white/20 transition active:scale-95">✕</button>
       </div>
     </div>
   );
