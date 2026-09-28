@@ -523,8 +523,8 @@ export const RESTAURANTS_COPY = {
     } as L,
     titleB: { ar: "باستخدام رمز QR", en: "powered by a QR code" } as L,
     subtitle: {
-      ar: "منيو إلكتروني متكامل بتصميم عصري وأداء سريع، يعرض أصنافك وأسعارك بشكل أنيق ويحدّثها في أي وقت — دون أي رسوم سنوية أو تطبيقات إضافية.",
-      en: "A complete digital menu with a modern design and fast performance — it shows your items and prices elegantly and updates any time, with no yearly fees or extra apps.",
+      ar: "منيو إلكتروني متكامل بتصميم عصري وأداء سريع، يعرض أصنافك وأسعارك بشكل أنيق ويحدّثها في أي وقت — باشتراك سنوي واحد وبدون تطبيقات إضافية.",
+      en: "A complete digital menu with a modern design and fast performance — it shows your items and prices elegantly and updates any time, on a single annual subscription with no extra apps.",
     } as L,
     ctaPrimary: { ar: "اطلب منيو مطعمك الآن", en: "Order your menu now" } as L,
     ctaSecondary: { ar: "شاهد التصاميم", en: "Browse the designs" } as L,
@@ -609,39 +609,92 @@ export const RESTAURANTS_COPY = {
     items: [
       {
         q: {
-          ar: "كم يستغرق تجهيز المنيو الإلكتروني؟",
-          en: "How long does the menu take?",
+          ar: "ما هو المنيو الإلكتروني وطريقة عمله؟",
+          en: "What is a digital menu and how does it work?",
         },
         a: {
-          ar: "نجهّز منيو مطعمك خلال ٤٨ ساعة بعد استلام الأصناف والأسعار والصور.",
-          en: "We prepare your menu within 48 hours of receiving your items, prices and photos.",
+          ar: "ببساطة هو رمز QR مع رابط خاص باسم منشأتك. ما إن يمسح الضيف الرمز أو يضغط الرابط حتى تُعرض له القائمة بالكامل — أقسامها وأطباقها وأسعارها وصورها — بأسلوب سلس وسريع يعمل على أي جهاز.",
+          en: "It's simply a QR code paired with a custom link for your venue. The moment a guest scans the code or taps the link, the full menu appears — sections, dishes, prices and photos — in a smooth, fast experience on any device.",
         },
       },
       {
         q: {
-          ar: "هل يمكنني تعديل المنيو بنفسي؟",
-          en: "Can I edit the menu myself?",
+          ar: "هل أحصل على رابط أشاركه مع عملائي أم مجرد رمز QR؟",
+          en: "Do I get a shareable link, or just a QR code?",
         },
         a: {
-          ar: "نعم، تحصل على لوحة تحكم بسيطة لتعديل الأصناف والأسعار والصور في أي وقت.",
-          en: "Yes, you get a simple dashboard to edit items, prices and photos any time.",
-        },
-      },
-      {
-        q: { ar: "هل هناك رسوم سنوية؟", en: "Are there yearly fees?" },
-        a: {
-          ar: "لا رسوم سنوية إجبارية؛ تدفع مرة واحدة ويبقى منيوك يعمل، والدعم متاح دائمًا.",
-          en: "No mandatory yearly fees — you pay once and your menu keeps running, with support always available.",
+          ar: "الأمر لا يتوقف عند رمز QR فحسب؛ ستحصل كذلك على رابط يحمل اسم مطعمك أو الكافيه، تقدر تنشره لضيوفك بسهولة عبر واتساب أو منصات التواصل المختلفة.",
+          en: "It's more than a QR code: you also get a custom link carrying your restaurant or café name, easy to share with guests over WhatsApp or your social channels.",
         },
       },
       {
         q: {
-          ar: "كيف يصل العميل إلى المنيو؟",
-          en: "How do guests reach the menu?",
+          ar: "كم يأخذ تجهيز المنيو الإلكتروني لمنشأتي؟",
+          en: "How long does it take to set up my menu?",
         },
         a: {
-          ar: "عبر مسح رمز QR على الطاولة أو من خلال رابط المطعم على وسائل التواصل.",
-          en: "By scanning the QR code on the table or through your restaurant link on social media.",
+          ar: "فور استلامنا بيانات مطعمك أو الكافيه، نفتح لك حسابًا خاصًا ونرسل إليك رابط لوحة التحكم. من هناك تضيف الأصناف والصور والأسعار وتدير قائمتك بالكامل وقتما تشاء وبكل يُسر.",
+          en: "As soon as we receive your details, we create your own account and send you the dashboard link. From there you add items, photos and prices and manage the whole menu whenever you like, effortlessly.",
+        },
+      },
+      {
+        q: {
+          ar: "هل أقدر أستخدمه لعرض الأصناف فقط بدون طلبات؟",
+          en: "Can I use it to display items only, without taking orders?",
+        },
+        a: {
+          ar: "بالطبع، لوحة التحكم تتيح لك ضبط هذا بضغطة: إمّا تشغيل استقبال الطلبات من الضيوف، أو إيقافه والاكتفاء بعرض الأطباق والأصناف فقط.",
+          en: "Absolutely — the dashboard lets you toggle this in one tap: either enable order-taking from guests, or turn it off and use the menu purely to showcase your dishes.",
+        },
+      },
+      {
+        q: {
+          ar: "فين توصلني الطلبات اللي يرسلها العملاء من المنيو؟",
+          en: "Where do I receive the orders guests send?",
+        },
+        a: {
+          ar: "كل الطلبات تصلك داخل لوحة التحكم الخاصة بك، وتقدر أيضًا تفعّل وصولها على واتساب ليصلك كل طلب لحظيًا، فتتابعها وتديرها بسهولة أكبر.",
+          en: "Every order lands in your dashboard, and you can also enable delivery to WhatsApp so each order reaches you instantly, making them easier to track and manage.",
+        },
+      },
+      {
+        q: {
+          ar: "هل بإمكاني التحكم في ألوان المنيو وشكله؟",
+          en: "Can I control the menu's colors and design?",
+        },
+        a: {
+          ar: "نعم، تقدر تفصّل مظهر القائمة لتناسب هوية مطعمك أو الكافيه؛ باختيار اللون الأساسي المستوحى من ألوان شعارك، مع حرية انتقاء نوع الخط الأنسب لك.",
+          en: "Yes, you can tailor the menu's look to your brand identity by choosing a primary color drawn from your logo, along with picking the font style that suits you.",
+        },
+      },
+      {
+        q: {
+          ar: "هل أقدر أضيف حسابات السوشيال ميديا داخل المنيو؟",
+          en: "Can I add my social media links inside the menu?",
+        },
+        a: {
+          ar: "أكيد، تقدر تضيف روابط صفحاتك على مواقع التواصل، وكذلك رابط تقييم جوجل ورقم واتساب وباقي وسائل التواصل، حتى يصل إليك ضيوفك بأيسر طريقة.",
+          en: "Of course — you can add your social page links, plus your Google review link, WhatsApp number and other contact channels, so guests can reach you with ease.",
+        },
+      },
+      {
+        q: {
+          ar: "هل يستطيع العملاء تقييم مطعمي عبر المنيو؟",
+          en: "Can customers rate my restaurant through the menu?",
+        },
+        a: {
+          ar: "نعم، القائمة تتضمن صفحة خاصة بتقييمات الضيوف، وكل تقييم يصل مباشرة إلى لوحة التحكم لديك، فتتابع آراءهم وتطوّر تجربتهم باستمرار.",
+          en: "Yes, the menu includes a dedicated ratings page, and every review goes straight to your dashboard so you can follow guests' feedback and keep improving their experience.",
+        },
+      },
+      {
+        q: {
+          ar: "هل هناك رسوم أخرى بخلاف الاشتراك السنوي؟",
+          en: "Are there any fees beyond the annual subscription?",
+        },
+        a: {
+          ar: "لا، لا تدفع سوى قيمة الاشتراك السنوي للمنيو الإلكتروني ليس إلا.",
+          en: "No — you only pay the annual subscription for the digital menu, nothing more.",
         },
       },
     ],
