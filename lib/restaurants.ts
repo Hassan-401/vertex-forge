@@ -523,8 +523,8 @@ export const RESTAURANTS_COPY = {
     } as L,
     titleB: { ar: "باستخدام رمز QR", en: "powered by a QR code" } as L,
     subtitle: {
-      ar: "منيو إلكتروني متكامل بتصميم عصري وأداء سريع، يعرض أصنافك وأسعارك بشكل أنيق ويحدّثها في أي وقت — باشتراك سنوي واحد وبدون تطبيقات إضافية.",
-      en: "A complete digital menu with a modern design and fast performance — it shows your items and prices elegantly and updates any time, on a single annual subscription with no extra apps.",
+      ar: "منيو إلكتروني عصري لمطعمك أو كافيهك، متاح لعملائك بضغطة واحدة عبر QR Code.",
+      en: "A modern digital menu for your restaurant or café, available to your guests in one tap via a QR code.",
     } as L,
     ctaPrimary: { ar: "اطلب منيو مطعمك الآن", en: "Order your menu now" } as L,
     ctaSecondary: { ar: "شاهد التصاميم", en: "Browse the designs" } as L,
