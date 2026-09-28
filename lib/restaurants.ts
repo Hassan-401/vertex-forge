@@ -427,7 +427,7 @@ export const MENU: MenuCategory[] = [
 
 /* --------------------------- design catalogue ---------------------------- */
 
-export type DesignId = "1" | "2" | "3" | "4" | "5" | "6";
+export type DesignId = "1" | "2" | "3" | "4" | "5" | "6" | "7";
 
 export type MenuDesign = {
   id: DesignId;
@@ -443,7 +443,7 @@ export type MenuDesign = {
 export const DESIGNS: MenuDesign[] = [
   {
     id: "1",
-    thumb: "/restaurants/themes/theme-1.jpg",
+    thumb: "/restaurants/themes/theme-1.webp",
     name: { ar: "التصميم الأول", en: "Design One" },
     style: {
       ar: "كلاسيكي بأقسام دائرية",
@@ -453,7 +453,7 @@ export const DESIGNS: MenuDesign[] = [
   },
   {
     id: "2",
-    thumb: "/restaurants/themes/theme-2.jpg",
+    thumb: "/restaurants/themes/theme-2.webp",
     name: { ar: "التصميم الثاني", en: "Design Two" },
     style: {
       ar: "قائمة بصور وأزرار خيارات",
@@ -463,31 +463,38 @@ export const DESIGNS: MenuDesign[] = [
   },
   {
     id: "3",
-    thumb: "/restaurants/themes/theme-3.jpg",
+    thumb: "/restaurants/themes/theme-3.webp",
     name: { ar: "التصميم الثالث", en: "Design Three" },
     style: { ar: "شبكة بطاقات وشارات عروض", en: "Card grid with offer badges" },
     accent: "#c2410c",
   },
   {
     id: "4",
-    thumb: "/restaurants/themes/theme-4.jpg",
+    thumb: "/restaurants/themes/theme-4.webp",
     name: { ar: "التصميم الرابع", en: "Design Four" },
     style: { ar: "داكن وأنيق", en: "Dark & elegant" },
     accent: "#d4a017",
   },
   {
     id: "5",
-    thumb: "/restaurants/themes/theme-5.jpg",
+    thumb: "/restaurants/themes/theme-5.webp",
     name: { ar: "التصميم الخامس", en: "Design Five" },
     style: { ar: "منيو مطبوع كلاسيكي", en: "Classic printed menu" },
     accent: "#7c5e3b",
   },
   {
     id: "6",
-    thumb: "/restaurants/themes/theme-6.jpg",
+    thumb: "/restaurants/themes/theme-6.webp",
     name: { ar: "التصميم السادس", en: "Design Six" },
     style: { ar: "بوستر جرافيكي فاخر", en: "Premium graphic poster" },
     accent: "#e8a33d",
+  },
+  {
+    id: "7",
+    thumb: "/restaurants/themes/theme-7.webp",
+    name: { ar: "التصميم السابع", en: "Design Seven" },
+    style: { ar: "قائمة خضراء أنيقة", en: "Elegant green list" },
+    accent: "#2f4a37",
   },
 ];
 

@@ -20,17 +20,93 @@ import {
 
 const featureIcons = [
   // QR
-  <svg key="qr" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><path d="M14 14h3v3M20 14v.01M14 20v.01M20 20v.01M17 20v.01" /></svg>,
+  <svg
+    key="qr"
+    viewBox="0 0 24 24"
+    className="h-6 w-6"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="3" y="3" width="7" height="7" rx="1" />
+    <rect x="14" y="3" width="7" height="7" rx="1" />
+    <rect x="3" y="14" width="7" height="7" rx="1" />
+    <path d="M14 14h3v3M20 14v.01M14 20v.01M20 20v.01M17 20v.01" />
+  </svg>,
   // palette
-  <svg key="palette" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="8.5" cy="10.5" r="1" /><circle cx="12" cy="8" r="1" /><circle cx="15.5" cy="10.5" r="1" /><path d="M12 21a2.5 2.5 0 0 0 0-5 2 2 0 0 1 0-4" /></svg>,
+  <svg
+    key="palette"
+    viewBox="0 0 24 24"
+    className="h-6 w-6"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="8.5" cy="10.5" r="1" />
+    <circle cx="12" cy="8" r="1" />
+    <circle cx="15.5" cy="10.5" r="1" />
+    <path d="M12 21a2.5 2.5 0 0 0 0-5 2 2 0 0 1 0-4" />
+  </svg>,
   // edit
-  <svg key="edit" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" /></svg>,
+  <svg
+    key="edit"
+    viewBox="0 0 24 24"
+    className="h-6 w-6"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 20h9" />
+    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z" />
+  </svg>,
   // clipboard
-  <svg key="orders" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="8" y="3" width="8" height="4" rx="1" /><path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2" /><path d="M9 12h6M9 16h4" /></svg>,
+  <svg
+    key="orders"
+    viewBox="0 0 24 24"
+    className="h-6 w-6"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="8" y="3" width="8" height="4" rx="1" />
+    <path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2" />
+    <path d="M9 12h6M9 16h4" />
+  </svg>,
   // chart
-  <svg key="chart" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>,
+  <svg
+    key="chart"
+    viewBox="0 0 24 24"
+    className="h-6 w-6"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+  </svg>,
   // star
-  <svg key="star" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.56 5.82 21 7 14.14l-5-4.87 7.1-1.01z" /></svg>,
+  <svg
+    key="star"
+    viewBox="0 0 24 24"
+    className="h-6 w-6"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 3l2.9 6.26L22 9.27l-5 4.87L18.18 21 12 17.56 5.82 21 7 14.14l-5-4.87 7.1-1.01z" />
+  </svg>,
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -93,7 +169,7 @@ export default function RestaurantsPage() {
             <div className="animate-float overflow-hidden rounded-3xl border border-border bg-card shadow-2xl shadow-primary/10 ring-hair">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/restaurants/hero-dashboard.jpg"
+                src="/restaurants/hero-dashboard.webp"
                 alt=""
                 className="h-full w-full object-cover"
               />
@@ -134,7 +210,9 @@ export default function RestaurantsPage() {
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/15 text-primary transition-transform group-hover:scale-105">
                 {featureIcons[i]}
               </span>
-              <h3 className="mt-5 text-lg font-extrabold">{tl(f.title, locale)}</h3>
+              <h3 className="mt-5 text-lg font-extrabold">
+                {tl(f.title, locale)}
+              </h3>
               <p className="mt-2 leading-7 text-muted-foreground">
                 {tl(f.body, locale)}
               </p>
@@ -189,12 +267,12 @@ export default function RestaurantsPage() {
               href={`/restaurants/menu/${d.id}`}
               className="group overflow-hidden rounded-3xl border border-border bg-card ring-hair transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+              <div className="relative aspect-[1096/1436] overflow-hidden bg-secondary">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={d.thumb}
                   alt={tl(d.name, locale)}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
                 <span
                   className="absolute top-3 end-3 h-6 w-6 rounded-full border-2 border-white/80 shadow"
@@ -212,7 +290,17 @@ export default function RestaurantsPage() {
                 </div>
                 <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary px-4 py-2 text-xs font-bold text-primary-foreground transition-transform group-hover:-translate-y-0.5">
                   {tl(C.designs.view, locale)}
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 rtl:rotate-180" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-3.5 w-3.5 rtl:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </span>
               </div>
             </Link>
@@ -247,7 +335,16 @@ export default function RestaurantsPage() {
                       isOpen ? "rotate-45" : ""
                     }`}
                   >
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
                   </span>
                 </button>
                 <div
