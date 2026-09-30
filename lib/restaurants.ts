@@ -633,7 +633,7 @@ export const RESTAURANTS_COPY = {
           en: "How long does it take to set up my menu?",
         },
         a: {
-          ar: "فور استلامنا بيانات مطعمك أو الكافيه، نفتح لك حسابًا خاصًا ونرسل إليك رابط لوحة التحكم. من هناك تضيف الأصناف والصور والأسعار وتدير قائمتك بالكامل وقتما تشاء وبكل يُسر.",
+          ar: "في خلال 24 ساعه من استلام بياناتك، نقوم بانشاء المنيو الخاص بك وإرسال رابط لوحة التحكم لك. من هناك تضيف الأصناف والصور والأسعار وتدير المنيو بالكامل وقتما تشاء، بكل سهولة.",
           en: "As soon as we receive your details, we create your own account and send you the dashboard link. From there you add items, photos and prices and manage the whole menu whenever you like, effortlessly.",
         },
       },
