@@ -265,6 +265,24 @@ const ar = {
         href: "https://icon-pharma.go-sharm.workers.dev/",
         image: "/assets/site-icon-pharma.png",
       },
+      {
+        key: "sparkle-accessories",
+        title: "Sparkle Accessories",
+        category: "store",
+        tag: "متجر إلكتروني",
+        url: "sparkle-accessories.store",
+        href: "https://sparkle-accessories.store/",
+        image: "/assets/site-sparkle-accessories.png",
+      },
+      {
+        key: "souq-masreya-fiberglass",
+        title: "Souq Masreya Fiberglass",
+        category: "store",
+        tag: "متجر إلكتروني",
+        url: "souq-masreya-fiberglass.com",
+        href: "https://souq-masreya-fiberglass.com/",
+        image: "/assets/site-souq-masreya-fiberglass.png",
+      },
 
       // ── متاجر إلكترونية (تصاميم جاهزة — قريباً أونلاين) ─────────────
       {
@@ -848,6 +866,24 @@ const en: Dict = {
         url: "icon-pharma.go-sharm.workers.dev",
         href: "https://icon-pharma.go-sharm.workers.dev/",
         image: "/assets/site-icon-pharma.png",
+      },
+      {
+        key: "sparkle-accessories",
+        title: "Sparkle Accessories",
+        category: "store",
+        tag: "E-commerce",
+        url: "sparkle-accessories.store",
+        href: "https://sparkle-accessories.store/",
+        image: "/assets/site-sparkle-accessories.png",
+      },
+      {
+        key: "souq-masreya-fiberglass",
+        title: "Souq Masreya Fiberglass",
+        category: "store",
+        tag: "E-commerce",
+        url: "souq-masreya-fiberglass.com",
+        href: "https://souq-masreya-fiberglass.com/",
+        image: "/assets/site-souq-masreya-fiberglass.png",
       },
 
       // ── E-commerce stores (ready designs — coming online soon) ─────
