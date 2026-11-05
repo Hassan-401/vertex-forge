@@ -74,6 +74,8 @@ const ar = {
       { key: "clinics", label: "أنظمة عيادات" },
       { key: "landing", label: "صفحات هبوط" },
       { key: "dash", label: "لوحات تحكم" },
+      { key: "menu", label: "منيوهات إلكترونية" },
+      { key: "edu", label: "تعليم وأكاديميات" },
     ],
     projects: [
       // ── مواقع شركات (شغل حقيقي أونلاين) ─────────────────────────────
@@ -176,6 +178,15 @@ const ar = {
         href: "https://travels-lovat.vercel.app/",
         image: "/assets/site-lovat-travels.png",
       },
+      {
+        key: "egy-trade-flavors",
+        title: "Egy Trade Flavors",
+        category: "corp",
+        tag: "موقع شركة",
+        url: "egy-trade-flavors.go-sharm.workers.dev",
+        href: "https://egy-trade-flavors.go-sharm.workers.dev/",
+        image: "/assets/site-egy-trade-flavors.png",
+      },
 
       // ── مواقع سياحية (شغل حقيقي أونلاين) ────────────────────────────
       {
@@ -245,6 +256,15 @@ const ar = {
         href: "https://five-kids-wear.vercel.app/",
         image: "/assets/site-five-kids.png",
       },
+      {
+        key: "icon-pharma",
+        title: "Icon Pharma",
+        category: "store",
+        tag: "متجر إلكتروني",
+        url: "icon-pharma.go-sharm.workers.dev",
+        href: "https://icon-pharma.go-sharm.workers.dev/",
+        image: "/assets/site-icon-pharma.png",
+      },
 
       // ── متاجر إلكترونية (تصاميم جاهزة — قريباً أونلاين) ─────────────
       {
@@ -309,6 +329,75 @@ const ar = {
         category: "store",
         tag: "متجر إلكتروني",
         image: "/assets/Outdoor & Camping.png",
+      },
+
+      // ── لوحات تحكم (شغل حقيقي أونلاين) ──────────────────────────────
+      {
+        key: "modern-food-system",
+        title: "Modern Food System",
+        category: "dash",
+        tag: "نظام إدارة",
+        url: "modern-food-system.go-sharm.workers.dev",
+        href: "https://modern-food-system.go-sharm.workers.dev/",
+        image: "/assets/site-modern-food-system.png",
+      },
+
+      // ── منيوهات إلكترونية (شغل حقيقي أونلاين) ───────────────────────
+      {
+        key: "dm-cafe",
+        title: "D&M Café",
+        category: "menu",
+        tag: "منيو إلكتروني",
+        url: "dm-cafe.go-sharm.workers.dev",
+        href: "https://dm-cafe.go-sharm.workers.dev/",
+        image: "/assets/site-dm-cafe.png",
+      },
+      {
+        key: "kai-cafe",
+        title: "KAI Café",
+        category: "menu",
+        tag: "منيو إلكتروني",
+        url: "kai-cafe.go-sharm.workers.dev",
+        href: "https://kai-cafe.go-sharm.workers.dev/",
+        image: "/assets/site-kai-cafe.png",
+      },
+      {
+        key: "coca-cafe",
+        title: "Coca Café",
+        category: "menu",
+        tag: "منيو إلكتروني",
+        url: "coca-cafe-v2.go-sharm.workers.dev",
+        href: "https://coca-cafe-v2.go-sharm.workers.dev/",
+        image: "/assets/site-coca-cafe.png",
+      },
+      {
+        key: "casa-manila",
+        title: "Casa Manila",
+        category: "menu",
+        tag: "منيو إلكتروني",
+        url: "casa-manila-menu.go-sharm.workers.dev",
+        href: "https://casa-manila-menu.go-sharm.workers.dev/",
+        image: "/assets/site-casa-manila.png",
+      },
+
+      // ── تعليم وأكاديميات (شغل حقيقي أونلاين) ────────────────────────
+      {
+        key: "gis-room",
+        title: "GIS Room",
+        category: "edu",
+        tag: "منصة تعليمية",
+        url: "gis-room.go-sharm.workers.dev",
+        href: "https://gis-room.go-sharm.workers.dev/",
+        image: "/assets/site-gis-room.png",
+      },
+      {
+        key: "marine-mada",
+        title: "Marine Mada Club",
+        category: "edu",
+        tag: "أكاديمية رياضية",
+        url: "marinemadasc.com",
+        href: "https://marinemadasc.com/",
+        image: "/assets/site-marine-mada.png",
       },
     ],
   },
@@ -569,6 +658,8 @@ const en: Dict = {
       { key: "clinics", label: "Clinic systems" },
       { key: "landing", label: "Landing pages" },
       { key: "dash", label: "Dashboards" },
+      { key: "menu", label: "E-menus" },
+      { key: "edu", label: "Education" },
     ],
     projects: [
       // ── Company sites (live, real work) ────────────────────────────
@@ -671,6 +762,15 @@ const en: Dict = {
         href: "https://travels-lovat.vercel.app/",
         image: "/assets/site-lovat-travels.png",
       },
+      {
+        key: "egy-trade-flavors",
+        title: "Egy Trade Flavors",
+        category: "corp",
+        tag: "Company site",
+        url: "egy-trade-flavors.go-sharm.workers.dev",
+        href: "https://egy-trade-flavors.go-sharm.workers.dev/",
+        image: "/assets/site-egy-trade-flavors.png",
+      },
 
       // ── Tourism sites (live, real work) ────────────────────────────
       {
@@ -740,6 +840,15 @@ const en: Dict = {
         href: "https://five-kids-wear.vercel.app/",
         image: "/assets/site-five-kids.png",
       },
+      {
+        key: "icon-pharma",
+        title: "Icon Pharma",
+        category: "store",
+        tag: "E-commerce",
+        url: "icon-pharma.go-sharm.workers.dev",
+        href: "https://icon-pharma.go-sharm.workers.dev/",
+        image: "/assets/site-icon-pharma.png",
+      },
 
       // ── E-commerce stores (ready designs — coming online soon) ─────
       {
@@ -804,6 +913,75 @@ const en: Dict = {
         category: "store",
         tag: "E-commerce",
         image: "/assets/Outdoor & Camping.png",
+      },
+
+      // ── Dashboards (live, real work) ───────────────────────────────
+      {
+        key: "modern-food-system",
+        title: "Modern Food System",
+        category: "dash",
+        tag: "Management system",
+        url: "modern-food-system.go-sharm.workers.dev",
+        href: "https://modern-food-system.go-sharm.workers.dev/",
+        image: "/assets/site-modern-food-system.png",
+      },
+
+      // ── E-menus (live, real work) ──────────────────────────────────
+      {
+        key: "dm-cafe",
+        title: "D&M Café",
+        category: "menu",
+        tag: "E-menu",
+        url: "dm-cafe.go-sharm.workers.dev",
+        href: "https://dm-cafe.go-sharm.workers.dev/",
+        image: "/assets/site-dm-cafe.png",
+      },
+      {
+        key: "kai-cafe",
+        title: "KAI Café",
+        category: "menu",
+        tag: "E-menu",
+        url: "kai-cafe.go-sharm.workers.dev",
+        href: "https://kai-cafe.go-sharm.workers.dev/",
+        image: "/assets/site-kai-cafe.png",
+      },
+      {
+        key: "coca-cafe",
+        title: "Coca Café",
+        category: "menu",
+        tag: "E-menu",
+        url: "coca-cafe-v2.go-sharm.workers.dev",
+        href: "https://coca-cafe-v2.go-sharm.workers.dev/",
+        image: "/assets/site-coca-cafe.png",
+      },
+      {
+        key: "casa-manila",
+        title: "Casa Manila",
+        category: "menu",
+        tag: "E-menu",
+        url: "casa-manila-menu.go-sharm.workers.dev",
+        href: "https://casa-manila-menu.go-sharm.workers.dev/",
+        image: "/assets/site-casa-manila.png",
+      },
+
+      // ── Education & academies (live, real work) ────────────────────
+      {
+        key: "gis-room",
+        title: "GIS Room",
+        category: "edu",
+        tag: "Learning platform",
+        url: "gis-room.go-sharm.workers.dev",
+        href: "https://gis-room.go-sharm.workers.dev/",
+        image: "/assets/site-gis-room.png",
+      },
+      {
+        key: "marine-mada",
+        title: "Marine Mada Club",
+        category: "edu",
+        tag: "Sports academy",
+        url: "marinemadasc.com",
+        href: "https://marinemadasc.com/",
+        image: "/assets/site-marine-mada.png",
       },
     ],
   },
