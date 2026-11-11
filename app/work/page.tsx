@@ -1,24 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
-import { Portfolio } from "@/components/portfolio";
+import { WorkShowcase } from "@/components/work-showcase";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { DevCredit } from "@/components/dev-credit";
 import { LogoMark } from "@/components/logo";
 import { useI18n } from "@/components/providers";
+import { WHATSAPP_URL } from "@/lib/site";
 
-function BackArrow() {
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4 fill-none stroke-current rtl:-scale-x-100"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 19l-7-7 7-7" />
-    </svg>
+    <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-bold text-muted-foreground">
+      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+      {children}
+    </span>
   );
 }
 
@@ -29,46 +24,89 @@ export default function WorkPage() {
     <div className="relative">
       <SiteHeader />
 
+      {/* ================================ HERO ============================== */}
       <section className="relative overflow-hidden bg-grid">
         <div className="glow-hero pointer-events-none absolute inset-x-0 -top-40 h-[420px]" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-32 sm:px-6 md:pt-40">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-2 text-sm font-bold text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <BackArrow />
-            {t.workBack}
-          </Link>
+        <div className="relative mx-auto max-w-6xl px-4 pb-10 pt-32 text-center sm:px-6 md:pt-40">
+          <Eyebrow>{t.work.eyebrow}</Eyebrow>
+          <h1 className="mt-6 text-3xl font-black sm:text-4xl md:text-5xl">
+            {t.work.pageTitle}
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            {t.work.pageSub}
+          </p>
+        </div>
+      </section>
 
-          <div className="mt-8 text-center">
-            <h1 className="text-3xl font-black sm:text-4xl md:text-5xl">
-              {t.work.pageTitle}
-            </h1>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              {t.work.pageSub}
-            </p>
+      {/* ============================== SECTIONS =========================== */}
+      <div className="pb-8">
+        <WorkShowcase />
+      </div>
+
+      {/* =============================== CTA ============================== */}
+      <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+        <div className="glow-bottom pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-border bg-card/60 px-6 py-14 text-center ring-hair sm:px-10">
+          <h2 className="text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
+            {t.cta.titleA}{" "}
+            <span className="text-gradient-brand">{t.cta.titleHighlight}</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
+            {t.cta.sub}
+          </p>
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:-translate-y-0.5"
+            >
+              {t.cta.primary}
+            </a>
+            <a
+              href="/"
+              className="rounded-full border border-border bg-secondary/50 px-8 py-4 text-sm font-bold text-foreground transition-colors hover:bg-secondary"
+            >
+              {t.workBack}
+            </a>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-        <Portfolio sidebar />
-      </section>
-
+      {/* ============================== FOOTER ============================ */}
       <footer className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-          <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-start">
-            <Link href="/" className="flex items-center gap-3">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-start">
+            <a href="/" className="flex items-center gap-3">
               <LogoMark className="h-9" />
-              <div className="text-base font-extrabold">
-                <span className="text-silver">VERTEX</span>{" "}
-                <span className="text-gradient-brand">FORGE</span>
+              <div>
+                <div className="text-base font-extrabold">
+                  <span className="text-silver">VERTEX</span>{" "}
+                  <span className="text-gradient-brand">FORGE</span>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {t.footer.tagline}
+                </div>
               </div>
-            </Link>
+            </a>
+
+            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              {t.footer.links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href.startsWith("#") ? `/${l.href}` : l.href}
+                  className="hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-border pt-5 text-xs text-muted-foreground sm:flex-row">
+            <span>{t.footer.rights}</span>
             <DevCredit />
-            <span className="text-xs text-muted-foreground">
-              {t.footer.rights}
-            </span>
+            <span className="hidden sm:inline">{t.footer.motto}</span>
           </div>
         </div>
       </footer>

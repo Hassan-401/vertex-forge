@@ -91,21 +91,23 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 md:h-20">
-        <a href="/" className="shrink-0">
-          <LogoLockup />
-        </a>
+        <div className="flex items-center gap-6 xl:gap-8">
+          <a href="/" className="shrink-0">
+            <LogoLockup />
+          </a>
 
-        <nav className="hidden items-center gap-1 lg:flex">
-          {t.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+          <nav className="hidden items-center gap-1 lg:flex">
+            {t.nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
 
         <div className="flex items-center gap-2">
           <LangToggle />
