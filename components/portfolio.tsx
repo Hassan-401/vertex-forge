@@ -29,6 +29,27 @@ type Project = {
   image?: string;
 };
 
+function initialsOf(title: string) {
+  return title
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+}
+
+function Monogram({ title }: { title: string }) {
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/15 via-secondary to-card">
+      <span className="text-3xl font-black tracking-tight text-primary/70">
+        {initialsOf(title)}
+      </span>
+    </div>
+  );
+}
+
 function ProjectCard({
   project,
   view,
@@ -41,18 +62,21 @@ function ProjectCard({
   // Live projects carry a real deployment link; the "coming soon" store
   // designs don't — those render as a non-clickable card with a Soon badge.
   const isLive = Boolean(project.href);
-  const image = project.image ?? "";
 
   const inner = (
     <>
       <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={encodeURI(image)}
-          alt={project.title}
-          loading="lazy"
-          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.06]"
-        />
+        {project.image ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={encodeURI(project.image)}
+            alt={project.title}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.06]"
+          />
+        ) : (
+          <Monogram title={project.title} />
+        )}
         <span className="absolute start-3 top-3 rounded-full bg-black/55 px-3 py-1 text-[11px] font-bold text-white backdrop-blur">
           {project.tag}
         </span>

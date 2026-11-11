@@ -10,6 +10,17 @@ import { cn } from "@/lib/utils";
  * link out; ready-but-unpublished designs show a "Soon" badge instead.
  * ------------------------------------------------------------------------ */
 
+function initialsOf(title: string) {
+  return title
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+}
+
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-bold text-muted-foreground">
@@ -56,8 +67,8 @@ function ProjectRow({
 
   const inner = (
     <>
-      <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-secondary ring-1 ring-border">
-        {project.image && (
+      <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 via-secondary to-card ring-1 ring-border">
+        {project.image ? (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={encodeURI(project.image)}
@@ -65,6 +76,10 @@ function ProjectRow({
             loading="lazy"
             className="h-full w-full object-cover object-top"
           />
+        ) : (
+          <span className="text-xs font-black text-primary/70">
+            {initialsOf(project.title)}
+          </span>
         )}
       </span>
 
